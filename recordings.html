@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Записи — Хор «Пралески» ДМШИ №2 Брест</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #FFF8E1;
+      font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+      color: #4B2C66;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+
+    /* Header */
+    .site-header {
+      background-color: #4B2C66;
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      box-shadow: 0 4px 12px rgba(75, 44, 102, 0.3);
+    }
+    .logo-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-shrink: 0;
+    }
+    .logo-icon {
+      width: 52px;
+      height: 52px;
+      display: block;
+    }
+    .site-title {
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: #FFF8E1;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .site-title small {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #E6D5B8;
+      letter-spacing: 0.03em;
+      margin-top: 2px;
+    }
+
+    /* Navigation */
+    .nav-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.6rem;
+      font-weight: 500;
+      color: #FFF8E1;
+      background-color: rgba(255, 248, 225, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 2.5rem;
+    }
+    .nav-list a {
+      padding: 0.4rem 0.2rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+    .nav-list a:hover {
+      border-bottom-color: #FFF8E1;
+      color: #E6D5B8;
+    }
+    .nav-list a.active-page {
+      border-bottom-color: #FFF8E1;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    /* Main content */
+    .main-content {
+      flex: 1;
+      padding: 2.5rem 2rem 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .page-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #4B2C66;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 3px solid #4B2C66;
+      display: inline-block;
+    }
+
+    .intro-text {
+      color: #2d1b3d;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+      max-width: 600px;
+    }
+
+    /* Recordings grid */
+    .recordings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .recording-card {
+      background-color: #ffffff;
+      border-radius: 20px;
+      padding: 1.5rem 1.5rem 1.8rem;
+      box-shadow: 0 6px 14px rgba(75, 44, 102, 0.08);
+      border-top: 6px solid #4B2C66;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .recording-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px rgba(75, 44, 102, 0.12);
+    }
+
+    .recording-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #4B2C66;
+      margin-bottom: 0.3rem;
+    }
+    .recording-date {
+      font-size: 0.8rem;
+      color: #6E5A7A;
+      background-color: #F0E6C8;
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      align-self: flex-start;
+    }
+    .recording-description {
+      font-size: 0.95rem;
+      color: #2d1b3d;
+      margin-bottom: 1.2rem;
+      flex: 1;
+    }
+
+    .placeholder-block {
+      background-color: #F0E6C8;
+      border-radius: 12px;
+      padding: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: #4B2C66;
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+    .placeholder-block svg {
+      width: 20px;
+      height: 20px;
+      fill: #4B2C66;
+      flex-shrink: 0;
+    }
+
+    .video-note {
+      background-color: #ffffff;
+      border: 1px dashed #4B2C66;
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      margin-top: 2.5rem;
+      text-align: center;
+      color: #4B2C66;
+      font-size: 1rem;
+    }
+    .video-note svg {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 0.5rem;
+      fill: #4B2C66;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: #4B2C66;
+      color: #FFF8E1;
+      text-align: center;
+      padding: 1.8rem 1.5rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      margin-top: auto;
+    }
+    .site-footer .footer-address {
+      color: #E6D5B8;
+      margin: 0.4rem 0 0.3rem;
+    }
+
+    @media (max-width: 650px) {
+      .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-list {
+        flex-wrap: wrap;
+        gap: 0.4rem 1.2rem;
+        background: none;
+        padding: 0.2rem 0;
+      }
+      .recording-card {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-title-group">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралески">
+        <g transform="translate(28, 32) scale(0.65) rotate(15)">
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(51)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(102)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(154)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(206)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(257)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(308)" />
+          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+        </g>
+        <g transform="translate(72, 38) scale(0.78) rotate(-20)">
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(51)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(102)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(154)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(206)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(257)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(308)" />
+          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+        </g>
+        <g transform="translate(48, 66) scale(0.92) rotate(5)">
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(51)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(102)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(154)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(206)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(257)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(308)" />
+          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+        </g>
+      </svg>
+      <div class="site-title">
+        Хор «Пралески»
+        <small>ДМШИ №2 г. Брест</small>
+      </div>
+    </div>
+    <nav aria-label="Основное меню">
+      <ul class="nav-list">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="news.html">Новости</a></li>
+        <li><a href="history.html">История</a></li>
+        <li><a href="recordings.html" class="active-page">Записи</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <h1 class="page-title">Записи выступлений</h1>
+    <p class="intro-text">Здесь собраны аудиозаписи концертных номеров хора «Пралески». В ближайшее время появятся видеоматериалы.</p>
+
+    <div class="recordings-grid">
+      <div class="recording-card">
+        <h3 class="recording-title">Купалiнка</h3>
+        <span class="recording-date">Март 2026</span>
+        <p class="recording-description">Обработка белорусской народной песни. Исполнение на концерте к 8 Марта.</p>
+        <div class="placeholder-block">
+          <!-- Новая чистая SVG-нота -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
+          </svg>
+          Запись появится позже
+        </div>
+      </div>
+
+      <div class="recording-card">
+        <h3 class="recording-title">Вяснянка</h3>
+        <span class="recording-date">Февраль 2026</span>
+        <p class="recording-description">Музыка И. Кузнецова. Запись с репетиции к конкурсу «Брестская весна».</p>
+        <div class="placeholder-block">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
+          </svg>
+          Запись появится позже
+        </div>
+      </div>
+
+      <div class="recording-card">
+        <h3 class="recording-title">Ой, рэчанька</h3>
+        <span class="recording-date">Декабрь 2025</span>
+        <p class="recording-description">Белорусская народная песня в обработке А. Ращинского. Новогодний концерт.</p>
+        <div class="placeholder-block">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
+          </svg>
+          Запись появится позже
+        </div>
+      </div>
+
+      <div class="recording-card">
+        <h3 class="recording-title">Ave Maria</h3>
+        <span class="recording-date">Ноябрь 2025</span>
+        <p class="recording-description">Дж. Каччини. Исполнение a cappella на областном фестивале в Кобрине.</p>
+        <div class="placeholder-block">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
+          </svg>
+          Запись появится позже
+        </div>
+      </div>
+
+      <div class="recording-card">
+        <h3 class="recording-title">Пацеркi</h3>
+        <span class="recording-date">Октябрь 2025</span>
+        <p class="recording-description">Музыка Л. Шлег. Концерт ко Дню матери в школе искусств.</p>
+        <div class="placeholder-block">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
+          </svg>
+          Запись появится позже
+        </div>
+      </div>
+
+      <div class="recording-card">
+        <h3 class="recording-title">Жураўлі</h3>
+        <span class="recording-date">Сентябрь 2025</span>
+        <p class="recording-description">Музыка Я. Френкеля. Выступление на торжественной линейке 1 сентября.</p>
+        <div class="placeholder-block">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
+          </svg>
+          Запись появится позже
+        </div>
+      </div>
+    </div>
+
+    <div class="video-note">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+      </svg>
+      <p>Видеозапись появится позже</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Государственное учреждение образования «Детская музыкальная школа искусств №2 г. Бреста»</p>
+    <p class="footer-address">ул. Комсомольская, 42, 224005 Брест, Беларусь</p>
+    <p>&copy; 2026 Хор «Пралески». Все права защищены.</p>
+  </footer>
+</body>
+</html>
