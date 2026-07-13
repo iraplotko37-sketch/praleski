@@ -27,7 +27,6 @@
       list-style: none;
     }
 
-    /* Header */
     .site-header {
       background-color: #4B2C66;
       padding: 1rem 1.5rem;
@@ -66,7 +65,6 @@
       margin-top: 2px;
     }
 
-    /* Navigation – пункт "Как нас найти" убран */
     .nav-list {
       display: flex;
       flex-wrap: wrap;
@@ -88,14 +86,12 @@
       border-bottom-color: #FFF8E1;
       color: #E6D5B8;
     }
-    /* Сейчас активная страница не подсвечена, потому что пункта нет */
     .nav-list a.active-page {
       border-bottom-color: #FFF8E1;
       font-weight: 600;
       color: #ffffff;
     }
 
-    /* Main */
     .main-content {
       flex: 1;
       padding: 2.5rem 2rem 3rem;
@@ -165,7 +161,6 @@
       margin-bottom: 0.2rem;
     }
 
-    /* Footer */
     .site-footer {
       background-color: #4B2C66;
       color: #FFF8E1;
@@ -256,8 +251,8 @@
 
     <div class="map-card">
       <div class="map-container">
-        <!-- Google Карта: ул. Комсомольская, 42, Брест -->
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2450.328374963204!2d23.68267231579405!3d52.093693970713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47210e5c5e5e5e5d%3A0x2e5c5c5c5c5c5c5c!2z0YPQuy4g0JrQvtC80YHQvtC80L7Qu9GM0YHQutCw0Y8gNDIsINCR0YDQtdGB0YI!5e0!3m2!1sru!2sby!4v1690000000000" allowfullscreen loading="lazy" title="Google Карта: ул. Комсомольская, 42, Брест"></iframe>
+        <!-- Теперь карта показывает адрес ДМШИ №2 (ул. Московская, 300) через поиск Яндекса -->
+        <iframe src="https://yandex.by/map-widget/v1/?text=Брест%2C%20ул.%20Московская%2C%20300&z=16&l=map" allowfullscreen loading="lazy" title="Яндекс.Карта: ДМШИ №2, Брест"></iframe>
       </div>
     </div>
 
@@ -267,16 +262,15 @@
       </svg>
       <div class="address-text">
         <strong>Адрес школы</strong>
-        224005, г. Брест, ул. Комсомольская, 42<br>
-        Детская музыкальная школа искусств №2, 3 этаж, кабинет № 305<br>
-        <span style="color:#5e4a72; font-size:0.9rem;">Ориентир — рядом с городским парком культуры и отдыха</span>
+        г. Брест, ул. Московская, 300<br>
+        Детская музыкальная школа искусств №2, 1 этаж, кабинет № 1
       </div>
     </div>
   </main>
 
   <footer class="site-footer">
     <p>Государственное учреждение образования «Детская музыкальная школа искусств №2 г. Бреста»</p>
-    <p class="footer-address">ул. Комсомольская, 42, 224005 Брест, Беларусь</p>
+    <p class="footer-address">ул. Московская, 300, 224005 Брест, Беларусь</p>
     <p>&copy; 2026 Хор «Пралески». Все права защищены.</p>
   </footer>
 </body>
