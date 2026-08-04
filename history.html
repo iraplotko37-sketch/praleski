@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>История — Хор «Пралески» ДМШИ №2 Брест</title>
+  <title>Новости — Хор «Пралескі» ДМШИ №2 Брест</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
@@ -12,9 +17,9 @@
     }
     body {
       background-color: #FFF8E1;
-      font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+      font-family: 'Unbounded', sans-serif;
       color: #4B2C66;
-      line-height: 1.5;
+      line-height: 1.7;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -27,174 +32,170 @@
       list-style: none;
     }
 
-    /* Header */
     .site-header {
       background-color: #4B2C66;
-      padding: 1rem 1.5rem;
+      padding: 1.6rem 3rem 1.5rem;
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.2rem;
-      box-shadow: 0 4px 12px rgba(75, 44, 102, 0.3);
+      flex-direction: column;
+      gap: 1.3rem;
+      box-shadow: 0 3px 12px rgba(75, 44, 102, 0.25);
     }
-    .logo-title-group {
+    .header-top {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      flex-shrink: 0;
+      gap: 0.9rem;
     }
     .logo-icon {
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 50px;
       display: block;
+      flex-shrink: 0;
     }
     .site-title {
-      font-size: 1.7rem;
+      font-size: 1.4rem;
       font-weight: 600;
       color: #FFF8E1;
       letter-spacing: 0.02em;
-      line-height: 1.2;
-      white-space: nowrap;
+      line-height: 1.3;
     }
     .site-title small {
       display: block;
-      font-size: 0.85rem;
-      font-weight: 400;
+      font-size: 0.68rem;
+      font-weight: 400; /* было 300 — исправлено */
       color: #E6D5B8;
-      letter-spacing: 0.03em;
-      margin-top: 2px;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+      text-transform: uppercase;
     }
-
-    /* Navigation */
+    .main-nav {
+      width: 100%;
+    }
     .nav-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1.6rem;
-      font-weight: 500;
-      color: #FFF8E1;
-      background-color: rgba(255, 248, 225, 0.1);
-      padding: 0.5rem 1rem;
-      border-radius: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.5rem;
     }
     .nav-list a {
-      padding: 0.4rem 0.2rem;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.2s, color 0.2s;
-      font-size: 1rem;
+      display: block;
+      text-align: center;
+      padding: 0.65rem 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 600; /* было 500 — сделал плотнее */
+      color: rgba(255, 248, 225, 0.75);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 248, 225, 0.15);
+      transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+      letter-spacing: 0.02em;
       white-space: nowrap;
     }
     .nav-list a:hover {
-      border-bottom-color: #FFF8E1;
-      color: #E6D5B8;
+      color: #FFF8E1;
+      background-color: rgba(255, 248, 225, 0.1);
+      border-color: rgba(255, 248, 225, 0.3);
     }
     .nav-list a.active-page {
-      border-bottom-color: #FFF8E1;
+      color: #4B2C66;
       font-weight: 600;
-      color: #ffffff;
+      background-color: #FFF8E1;
+      border-color: #FFF8E1;
     }
 
-    /* Main content */
     .main-content {
       flex: 1;
-      padding: 2.5rem 2rem 3rem;
-      max-width: 900px;
+      padding: 3rem 3rem 4rem;
+      max-width: 920px;
       margin: 0 auto;
       width: 100%;
     }
-
     .page-title {
-      font-size: 2.2rem;
-      font-weight: 600;
-      color: #4B2C66;
-      margin-bottom: 2rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 3px solid #4B2C66;
-      display: inline-block;
-    }
-
-    .history-block {
-      background-color: #ffffff;
-      border-radius: 20px;
-      padding: 2rem 2rem 2.2rem;
-      box-shadow: 0 6px 14px rgba(75, 44, 102, 0.08);
-      border-left: 8px solid #4B2C66;
-    }
-
-    .history-block p {
-      font-size: 1.08rem;
-      color: #2d1b3d;
-      margin-bottom: 1.3rem;
-      line-height: 1.6;
-    }
-
-    .history-block p:last-child {
-      margin-bottom: 0;
-    }
-
-    .history-block .highlight {
-      font-weight: 600;
-      color: #4B2C66;
-    }
-
-    .milestone {
-      display: flex;
-      gap: 1rem;
-      margin: 1.5rem 0 1rem;
-      align-items: baseline;
-    }
-    .milestone-year {
+      font-size: 2rem;
       font-weight: 700;
-      font-size: 1.2rem;
       color: #4B2C66;
-      min-width: 4rem;
-      background: #F0E6C8;
-      padding: 0.2rem 0.8rem;
-      border-radius: 16px;
-      text-align: center;
+      margin-bottom: 0.5rem;
     }
-    .milestone-text {
-      flex: 1;
-      font-size: 1.05rem;
-      color: #2d1b3d;
+    .page-subtitle {
+      font-size: 0.9rem;
+      font-weight: 400; /* было 300 — исправлено */
+      color: #7A6393;
+      margin-bottom: 2.2rem;
     }
 
-    /* Footer */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .news-card {
+      background-color: #ffffff;
+      border-radius: 18px;
+      padding: 2rem 2.2rem;
+      box-shadow: 0 4px 18px rgba(75, 44, 102, 0.07);
+      border-left: 5px solid #6A5DC2;
+    }
+    .news-date {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: #6A5DC2;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.6rem;
+    }
+    .news-card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #4B2C66;
+      margin-bottom: 0.7rem;
+    }
+    .news-card p {
+      font-size: 0.9rem;
+      font-weight: 400; /* было 300 — исправлено */
+      color: #3A2550;
+      line-height: 1.8;
+    }
+
     .site-footer {
       background-color: #4B2C66;
       color: #FFF8E1;
       text-align: center;
       padding: 1.8rem 1.5rem;
-      font-size: 0.95rem;
-      letter-spacing: 0.02em;
+      font-size: 0.78rem;
+      font-weight: 400; /* было 300 — исправлено */
+      letter-spacing: 0.03em;
       margin-top: auto;
+      line-height: 1.9;
     }
     .site-footer .footer-address {
       color: #E6D5B8;
-      margin: 0.4rem 0 0.3rem;
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 900px) {
       .site-header {
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 1.2rem 1.4rem;
       }
       .nav-list {
-        flex-wrap: wrap;
-        gap: 0.4rem 1.2rem;
-        background: none;
-        padding: 0.2rem 0;
+        grid-template-columns: repeat(3, 1fr);
       }
-      .history-block {
-        padding: 1.5rem 1.2rem;
+      .nav-list a {
+        padding: 0.55rem 0.4rem;
+        font-size: 0.72rem;
+      }
+      .main-content {
+        padding: 2rem 1.4rem 2.5rem;
+      }
+      .news-card {
+        padding: 1.5rem 1.4rem;
+      }
+      .page-title {
+        font-size: 1.7rem;
       }
     }
   </style>
 </head>
 <body>
+
   <header class="site-header">
-    <div class="logo-title-group">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралески">
+    <div class="header-top">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралескі">
         <g transform="translate(28, 32) scale(0.65) rotate(15)">
           <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" />
           <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(51)" />
@@ -230,15 +231,16 @@
         </g>
       </svg>
       <div class="site-title">
-        Хор «Пралески»
+        Хор «Пралескі»
         <small>ДМШИ №2 г. Брест</small>
       </div>
     </div>
-    <nav aria-label="Основное меню">
+    <nav class="main-nav" aria-label="Основное меню">
       <ul class="nav-list">
         <li><a href="index.html">Главная</a></li>
-        <li><a href="news.html">Новости</a></li>
-        <li><a href="history.html" class="active-page">История</a></li>
+        <li><a href="news.html" class="active-page">Новости</a></li>
+        <li><a href="history.html">История</a></li>
+        <li><a href="achievements.html">Достижения</a></li>
         <li><a href="recordings.html">Записи</a></li>
         <li><a href="contacts.html">Контакты</a></li>
       </ul>
@@ -246,61 +248,38 @@
   </header>
 
   <main class="main-content">
-    <h1 class="page-title">История хора</h1>
-    <div class="history-block">
-      <p>
-        Хор «Пралески» был основан в <span class="highlight">1998 году</span> при Детской музыкальной школе искусств №2 города Бреста. Инициатором создания коллектива выступила талантливый хормейстер и педагог Елена Викторовна Ковальчук, которая и сегодня остаётся его бессменным художественным руководителем.
-      </p>
-      <p>
-        Название «Пралески» было выбрано не случайно: этот первый весенний цветок символизирует чистоту, нежность и пробуждение — качества, присущие детским голосам и самой музыке. С первых дней существования хор взял курс на изучение и популяризацию белорусского песенного фольклора, классической хоровой музыки и произведений современных композиторов.
-      </p>
+    <h1 class="page-title">Новости</h1>
+    <p class="page-subtitle">События и выступления хора</p>
 
-      <div class="milestone">
-        <span class="milestone-year">1998</span>
-        <span class="milestone-text">Основание хора. Первый набор — 25 учеников младших классов. Первое выступление на школьном концерте ко Дню учителя.</span>
-      </div>
-      <div class="milestone">
-        <span class="milestone-year">2001</span>
-        <span class="milestone-text">Первая значимая победа — звание лауреата городского конкурса «Юные таланты Брестчины». Коллектив начинает регулярно выступать на городских площадках.</span>
-      </div>
-      <div class="milestone">
-        <span class="milestone-year">2005</span>
-        <span class="milestone-text">Присвоено звание «Образцовый детский коллектив» за высокий исполнительский уровень и активную концертную деятельность.</span>
-      </div>
-      <div class="milestone">
-        <span class="milestone-year">2010</span>
-        <span class="milestone-text">Гастрольная поездка в Польшу (г. Бяла-Подляска) с программой белорусской духовной и народной музыки. Выступления прошли с большим успехом.</span>
-      </div>
-      <div class="milestone">
-        <span class="milestone-year">2015</span>
-        <span class="milestone-text">Участие в Международном фестивале «Хрустальный звон» (Минск). Диплом I степени в номинации «Детские хоры».</span>
-      </div>
-      <div class="milestone">
-        <span class="milestone-year">2018</span>
-        <span class="milestone-text">20-летний юбилей. Большой праздничный концерт с участием выпускников и приглашённых коллективов. Выпущен первый аудиодиск с записями хора.</span>
-      </div>
-      <div class="milestone">
-        <span class="milestone-year">2022</span>
-        <span class="milestone-text">Победа на Республиканском конкурсе хоровых коллективов «Пеўчае поле». Коллектив подтверждает звание одного из лучших детских хоров страны.</span>
-      </div>
-      <div class="milestone">
-        <span class="milestone-year">2025</span>
-        <span class="milestone-text">Активная концертная деятельность, участие в областных фестивалях, работа над новыми программами. В репертуаре — более 60 произведений.</span>
-      </div>
+    <div class="news-list">
+      <!-- 22 июня -->
+      <article class="news-card">
+        <div class="news-date">22 июня 2026</div>
+        <h2>Выступление в Брестской крепости</h2>
+        <p>В День памяти и скорби хор «Пралескі» выступил в мемориальном комплексе «Брестская крепость-герой». Песни о мужестве и мире звучали у стен легендарной цитадели.</p>
+      </article>
 
-      <p>
-        За годы существования через хор прошли сотни юных певцов. Многие выпускники продолжили музыкальное образование в средних специальных и высших учебных заведениях, стали профессиональными музыкантами и педагогами. «Пралески» — это не просто коллектив, это настоящая творческая семья, где сохраняются традиции и воспитывается любовь к музыке и родной культуре.
-      </p>
-      <p>
-        Сегодня хор насчитывает около <span class="highlight">40 участников</span> в возрасте от 8 до 17 лет. Репертуар постоянно обновляется, включая как классические хоровые произведения, так и обработки народных песен, сочинения современных белорусских авторов. Руководитель — Е.В. Ковальчук, концертмейстер — Т.П. Савицкая.
-      </p>
+      <!-- 22 мая -->
+      <article class="news-card">
+        <div class="news-date">22 мая 2026</div>
+        <h2>Юбилейный концерт к 30-летию хора</h2>
+        <p>Тридцатилетие коллектива отметили большим праздничным вечером. На сцену вышли выпускники разных лет, а зал был полон благодарных зрителей.</p>
+      </article>
+
+      <!-- 4 апреля -->
+      <article class="news-card">
+        <div class="news-date">4 апреля 2026</div>
+        <h2>Звание «образцовый» — подтверждено!</h2>
+        <p>Хор «Пралескі» успешно защитил почётное звание «образцовый любительский коллектив». Это признание высокого мастерства и верности традициям.</p>
+      </article>
     </div>
   </main>
 
   <footer class="site-footer">
-    <p>Государственное учреждение образования «Детская музыкальная школа искусств №2 г. Бреста»</p>
-    <p class="footer-address">ул. Комсомольская, 42, 224005 Брест, Беларусь</p>
-    <p>&copy; 2026 Хор «Пралески». Все права защищены.</p>
+    <p>ГУО «Детская музыкальная школа искусств №2 г. Бреста»</p>
+    <p class="footer-address">ул. Московская, 300, 224005 Брест, Беларусь</p>
+    <p>&copy; 2026 Хор «Пралескі». Все права защищены.</p>
   </footer>
+
 </body>
 </html>
