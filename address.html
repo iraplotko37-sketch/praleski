@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>Где мы находимся — Хор «Пралески» ДМШИ №2 Брест</title>
+  <title>Как нас найти — Хор «Пралескі» ДМШИ №2 Брест</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
@@ -12,9 +17,9 @@
     }
     body {
       background-color: #FFF8E1;
-      font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+      font-family: 'Unbounded', sans-serif;
       color: #4B2C66;
-      line-height: 1.5;
+      line-height: 1.7;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -27,95 +32,99 @@
       list-style: none;
     }
 
+    /* ===== Header ===== */
     .site-header {
       background-color: #4B2C66;
-      padding: 1rem 1.5rem;
+      padding: 1.6rem 3rem 1.5rem;
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.2rem;
-      box-shadow: 0 4px 12px rgba(75, 44, 102, 0.3);
+      flex-direction: column;
+      gap: 1.3rem;
+      box-shadow: 0 3px 12px rgba(75, 44, 102, 0.25);
     }
-    .logo-title-group {
+    .header-top {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      flex-shrink: 0;
+      gap: 0.9rem;
     }
     .logo-icon {
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 50px;
       display: block;
+      flex-shrink: 0;
     }
     .site-title {
-      font-size: 1.7rem;
+      font-size: 1.4rem;
       font-weight: 600;
       color: #FFF8E1;
       letter-spacing: 0.02em;
-      line-height: 1.2;
-      white-space: nowrap;
+      line-height: 1.3;
     }
     .site-title small {
       display: block;
-      font-size: 0.85rem;
-      font-weight: 400;
+      font-size: 0.68rem;
+      font-weight: 300;
       color: #E6D5B8;
-      letter-spacing: 0.03em;
-      margin-top: 2px;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+      text-transform: uppercase;
     }
 
+    /* ===== Навигация ===== */
+    .main-nav {
+      width: 100%;
+    }
     .nav-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1.6rem;
-      font-weight: 500;
-      color: #FFF8E1;
-      background-color: rgba(255, 248, 225, 0.1);
-      padding: 0.5rem 1rem;
-      border-radius: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.5rem;
     }
     .nav-list a {
-      padding: 0.4rem 0.2rem;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.2s, color 0.2s;
-      font-size: 1rem;
+      display: block;
+      text-align: center;
+      padding: 0.65rem 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255, 248, 225, 0.75);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 248, 225, 0.15);
+      transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+      letter-spacing: 0.02em;
       white-space: nowrap;
     }
     .nav-list a:hover {
-      border-bottom-color: #FFF8E1;
-      color: #E6D5B8;
-    }
-    .nav-list a.active-page {
-      border-bottom-color: #FFF8E1;
-      font-weight: 600;
-      color: #ffffff;
+      color: #FFF8E1;
+      background-color: rgba(255, 248, 225, 0.1);
+      border-color: rgba(255, 248, 225, 0.3);
     }
 
+    /* ===== Main ===== */
     .main-content {
       flex: 1;
-      padding: 2.5rem 2rem 3rem;
+      padding: 3rem 3rem 4rem;
       max-width: 1000px;
       margin: 0 auto;
       width: 100%;
     }
 
     .page-title {
-      font-size: 2.2rem;
-      font-weight: 600;
+      font-size: 2rem;
+      font-weight: 700;
       color: #4B2C66;
-      margin-bottom: 2rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 3px solid #4B2C66;
-      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #7A6393;
+      margin-bottom: 2.2rem;
     }
 
     .map-card {
       background-color: #ffffff;
-      border-radius: 20px;
+      border-radius: 18px;
       padding: 1.5rem;
-      box-shadow: 0 6px 14px rgba(75, 44, 102, 0.08);
-      border-left: 8px solid #4B2C66;
+      box-shadow: 0 4px 18px rgba(75, 44, 102, 0.07);
       margin-bottom: 2rem;
     }
 
@@ -134,31 +143,32 @@
 
     .address-box {
       background-color: #ffffff;
-      border-radius: 20px;
-      padding: 1.8rem 2rem;
-      box-shadow: 0 6px 14px rgba(75, 44, 102, 0.08);
-      border-left: 8px solid #4B2C66;
+      border-radius: 18px;
+      padding: 2rem 2.2rem;
+      box-shadow: 0 4px 18px rgba(75, 44, 102, 0.07);
       display: flex;
       align-items: flex-start;
       gap: 1rem;
+      border-left: 4px solid #6A5DC2;
     }
     .address-icon {
       width: 24px;
       height: 24px;
       flex-shrink: 0;
-      fill: #4B2C66;
-      margin-top: 3px;
+      fill: #6A5DC2;
+      margin-top: 2px;
     }
     .address-text {
-      font-size: 1.05rem;
-      color: #2d1b3d;
-      line-height: 1.6;
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: #3A2550;
+      line-height: 1.8;
     }
     .address-text strong {
-      color: #4B2C66;
       font-weight: 600;
+      color: #4B2C66;
       display: block;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.3rem;
     }
 
     .site-footer {
@@ -166,36 +176,44 @@
       color: #FFF8E1;
       text-align: center;
       padding: 1.8rem 1.5rem;
-      font-size: 0.95rem;
-      letter-spacing: 0.02em;
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
       margin-top: auto;
+      line-height: 1.9;
     }
     .site-footer .footer-address {
       color: #E6D5B8;
-      margin: 0.4rem 0 0.3rem;
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 900px) {
       .site-header {
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 1.2rem 1.4rem;
       }
       .nav-list {
-        flex-wrap: wrap;
-        gap: 0.4rem 1.2rem;
-        background: none;
-        padding: 0.2rem 0;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .nav-list a {
+        padding: 0.55rem 0.4rem;
+        font-size: 0.72rem;
+      }
+      .main-content {
+        padding: 2rem 1.4rem 2.5rem;
       }
       .map-container {
         height: 300px;
+      }
+      .page-title {
+        font-size: 1.7rem;
       }
     }
   </style>
 </head>
 <body>
+
   <header class="site-header">
-    <div class="logo-title-group">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралески">
+    <div class="header-top">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралескі">
         <g transform="translate(28, 32) scale(0.65) rotate(15)">
           <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" />
           <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(51)" />
@@ -231,15 +249,17 @@
         </g>
       </svg>
       <div class="site-title">
-        Хор «Пралески»
+        Хор «Пралескі»
         <small>ДМШИ №2 г. Брест</small>
       </div>
     </div>
-    <nav aria-label="Основное меню">
+
+    <nav class="main-nav" aria-label="Основное меню">
       <ul class="nav-list">
         <li><a href="index.html">Главная</a></li>
         <li><a href="news.html">Новости</a></li>
         <li><a href="history.html">История</a></li>
+        <li><a href="achievements.html">Достижения</a></li>
         <li><a href="recordings.html">Записи</a></li>
         <li><a href="contacts.html">Контакты</a></li>
       </ul>
@@ -247,12 +267,13 @@
   </header>
 
   <main class="main-content">
-    <h1 class="page-title">Где мы находимся</h1>
+    <h1 class="page-title">Как нас найти</h1>
+    <p class="page-subtitle">Схема проезда и адрес школы</p>
 
     <div class="map-card">
       <div class="map-container">
-        <!-- Теперь карта показывает адрес ДМШИ №2 (ул. Московская, 300) через поиск Яндекса -->
-        <iframe src="https://yandex.by/map-widget/v1/?text=Брест%2C%20ул.%20Московская%2C%20300&z=16&l=map" allowfullscreen loading="lazy" title="Яндекс.Карта: ДМШИ №2, Брест"></iframe>
+        <!-- Исправленные координаты: точное местоположение ДМШИ №2 -->
+        <iframe src="https://yandex.by/map-widget/v1/?ll=23.751393%2C52.098269&z=17&pt=23.751393%2C52.098269%2Cflag&l=map" allowfullscreen loading="lazy" title="Яндекс.Карта: ДМШИ №2, Брест"></iframe>
       </div>
     </div>
 
@@ -261,17 +282,18 @@
         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
       </svg>
       <div class="address-text">
-        <strong>Адрес школы</strong>
+        <strong>ДМШИ №2 г. Бреста</strong>
         г. Брест, ул. Московская, 300<br>
-        Детская музыкальная школа искусств №2, 1 этаж, кабинет № 1
+        1 этаж, кабинет № 1
       </div>
     </div>
   </main>
 
   <footer class="site-footer">
-    <p>Государственное учреждение образования «Детская музыкальная школа искусств №2 г. Бреста»</p>
+    <p>ГУО «Детская музыкальная школа искусств №2 г. Бреста»</p>
     <p class="footer-address">ул. Московская, 300, 224005 Брест, Беларусь</p>
-    <p>&copy; 2026 Хор «Пралески». Все права защищены.</p>
+    <p>&copy; 2026 Хор «Пралескі». Все права защищены.</p>
   </footer>
+
 </body>
 </html>
