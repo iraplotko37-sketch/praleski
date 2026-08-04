@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Достижения — Хор «Пралескі» ДМШИ №2 Брест</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #FFF8E1;
+      font-family: 'Unbounded', sans-serif;
+      color: #4B2C66;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+
+    .site-header {
+      background-color: #4B2C66;
+      padding: 1.6rem 3rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+      box-shadow: 0 3px 12px rgba(75, 44, 102, 0.25);
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      display: block;
+      flex-shrink: 0;
+    }
+    .site-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #FFF8E1;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+    }
+    .site-title small {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: #E6D5B8;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+    .main-nav {
+      width: 100%;
+    }
+    .nav-list {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.5rem;
+    }
+    .nav-list a {
+      display: block;
+      text-align: center;
+      padding: 0.65rem 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255, 248, 225, 0.75);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 248, 225, 0.15);
+      transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .nav-list a:hover {
+      color: #FFF8E1;
+      background-color: rgba(255, 248, 225, 0.1);
+      border-color: rgba(255, 248, 225, 0.3);
+    }
+    .nav-list a.active-page {
+      color: #4B2C66;
+      font-weight: 600;
+      background-color: #FFF8E1;
+      border-color: #FFF8E1;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 3rem 3rem 4rem;
+      max-width: 920px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #4B2C66;
+      margin-bottom: 0.5rem;
+    }
+    .page-subtitle {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #7A6393;
+      margin-bottom: 2.2rem;
+    }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+    .achievement-card {
+      background-color: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 1.8rem;
+      box-shadow: 0 4px 18px rgba(75, 44, 102, 0.07);
+      border-top: 4px solid #6A5DC2;
+    }
+    .achievement-card:nth-child(2n) {
+      border-top-color: #6E95E8;
+    }
+    .achievement-card:nth-child(3n) {
+      border-top-color: #7D73E6;
+    }
+    .achievement-card h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #4B2C66;
+      margin-bottom: 0.6rem;
+    }
+    .achievement-card p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: #3A2550;
+      line-height: 1.7;
+    }
+
+    .site-footer {
+      background-color: #4B2C66;
+      color: #FFF8E1;
+      text-align: center;
+      padding: 1.8rem 1.5rem;
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      margin-top: auto;
+      line-height: 1.9;
+    }
+    .site-footer .footer-address {
+      color: #E6D5B8;
+    }
+
+    @media (max-width: 900px) {
+      .site-header {
+        padding: 1.2rem 1.4rem;
+      }
+      .nav-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .nav-list a {
+        padding: 0.55rem 0.4rem;
+        font-size: 0.72rem;
+      }
+      .main-content {
+        padding: 2rem 1.4rem 2.5rem;
+      }
+      .page-title {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-top">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралескі">
+        <g transform="translate(28, 32) scale(0.65) rotate(15)">
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(51)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(102)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(154)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(206)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(257)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(308)" />
+          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+        </g>
+        <g transform="translate(72, 38) scale(0.78) rotate(-20)">
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(51)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(102)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(154)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(206)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(257)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(308)" />
+          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+        </g>
+        <g transform="translate(48, 66) scale(0.92) rotate(5)">
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(51)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(102)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(154)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(206)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(257)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(308)" />
+          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+        </g>
+      </svg>
+      <div class="site-title">
+        Хор «Пралескі»
+        <small>ДМШИ №2 г. Брест</small>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="Основное меню">
+      <ul class="nav-list">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="news.html">Новости</a></li>
+        <li><a href="history.html">История</a></li>
+        <li><a href="achievements.html" class="active-page">Достижения</a></li>
+        <li><a href="recordings.html">Записи</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <h1 class="page-title">Достижения</h1>
+    <p class="page-subtitle">Награды и победы хора</p>
+
+    <div class="achievements-grid">
+      <div class="achievement-card">
+        <h2>Образцовый коллектив</h2>
+        <p>Присвоено звание «образцовый самодеятельный коллектив» Министерством культуры Республики Беларусь.</p>
+      </div>
+      <div class="achievement-card">
+        <h2>XXI православный фестиваль</h2>
+        <p>Диплом фестиваля духовных песнопений «Пойте Богу нашему, пойте».</p>
+      </div>
+      <div class="achievement-card">
+        <h2>XXIII православный фестиваль</h2>
+        <p>Диплом фестиваля духовных песнопений «Пойте Богу нашему, пойте».</p>
+      </div>
+      <div class="achievement-card">
+        <h2>Гоман юнацтва</h2>
+        <p>Диплом лауреата II степени III Областного фестиваля-конкурса детского хорового искусства.</p>
+      </div>
+      <div class="achievement-card">
+        <h2>ЛьВенок</h2>
+        <p>Диплом Гран-при X Республиканского фестиваля-конкурса (Лидский венок).</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>ГУО «Детская музыкальная школа искусств №2 г. Бреста»</p>
+    <p class="footer-address">ул. Московская, 300, 224005 Брест, Беларусь</p>
+    <p>&copy; 2026 Хор «Пралескі». Все права защищены.</p>
+  </footer>
+
+</body>
+</html>
