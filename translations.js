@@ -97,8 +97,8 @@ const translations = {
       address: "ул. Московская, 300, 224005 Брест, Беларусь",
       copyright: "© 2026 Хор «Пралескі». Все права защищены."
     },
-    toggleDark: "🌙 Тёмная",
-    toggleLight: "☀️ Светлая"
+    toggleDark: "Тёмная",
+    toggleLight: "Светлая"
   },
   
   be: {
@@ -199,8 +199,8 @@ const translations = {
       address: "вул. Маскоўская, 300, 224005 Брэст, Беларусь",
       copyright: "© 2026 Хор «Пралескі». Усе правы абаронены."
     },
-    toggleDark: "🌙 Цёмная",
-    toggleLight: "☀️ Светлая"
+    toggleDark: "Цёмная",
+    toggleLight: "Светлая"
   },
   
   en: {
@@ -301,8 +301,8 @@ const translations = {
       address: "300 Moskovskaya St., 224005 Brest, Belarus",
       copyright: "© 2026 Choir «Pralieski». All rights reserved."
     },
-    toggleDark: "🌙 Dark",
-    toggleLight: "☀️ Light"
+    toggleDark: "Dark",
+    toggleLight: "Light"
   }
 };
 
@@ -313,13 +313,11 @@ function setLanguage(lang) {
   localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
   
-  // Обновить выпадающий список языков
-  const langSwitcher = document.querySelector('.lang-switcher');
+  const langSwitcher = document.querySelector('.lang-select');
   if (langSwitcher) {
     langSwitcher.value = lang;
   }
   
-  // Перевод навигации
   document.querySelectorAll('[data-i18n-nav]').forEach(el => {
     const key = el.getAttribute('data-i18n-nav');
     if (translations[lang].nav[key]) {
@@ -327,7 +325,6 @@ function setLanguage(lang) {
     }
   });
   
-  // Перевод контента
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     const keys = key.split('.');
@@ -348,13 +345,11 @@ function setLanguage(lang) {
     }
   });
   
-  // Обновить кнопку темы
   if (typeof updateThemeButtonText === 'function') {
     updateThemeButtonText();
   }
 }
 
-// Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', function() {
   setLanguage(currentLang);
 });
