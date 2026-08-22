@@ -10,19 +10,84 @@
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* CSS variables для светлой темы (по умолчанию) */
+    :root {
+      --bg-body: #FFF8E1;
+      --bg-header: #4B2C66;
+      --bg-footer: #4B2C66;
+      --bg-card: #ffffff;
+      --bg-news-card: #ffffff;
+      --text-primary: #4B2C66;
+      --text-secondary: #3A2550;
+      --text-muted: #7A6393;
+      --text-header: #FFF8E1;
+      --text-footer: #FFF8E1;
+      --text-footer-address: #E6D5B8;
+      --border-light: #E6D5B8;
+      --border-card: #F0E6C8;
+      --shadow: rgba(75, 44, 102, 0.07);
+      --shadow-hover: rgba(75, 44, 102, 0.12);
+      --nav-hover-bg: rgba(255, 248, 225, 0.1);
+      --nav-border: rgba(255, 248, 225, 0.15);
+      --divider-line: #E6D5B8;
+      --divider-dot: #6A5DC2;
+      --icon-fill: #6A5DC2;
+      --btn-toggle-bg: rgba(255, 255, 255, 0.15);
+      --btn-toggle-hover: rgba(255, 255, 255, 0.25);
+      --btn-toggle-border: rgba(255, 248, 225, 0.25);
+      --btn-toggle-color: #FFF8E1;
+      --btn-toggle-active-bg: #FFF8E1;
+      --btn-toggle-active-color: #4B2C66;
+      --news-border-left: #6A5DC2;
+      --news-date-color: #6A5DC2;
+    }
+
+    /* Тёмная тема */
+    body.dark-theme {
+      --bg-body: #2C1F3A;
+      --bg-header: #1F1429;
+      --bg-footer: #1F1429;
+      --bg-card: #3A2A4A;
+      --bg-news-card: #3A2A4A;
+      --text-primary: #F0E6C8;
+      --text-secondary: #D8CBB5;
+      --text-muted: #B09BB0;
+      --text-header: #FFF8E1;
+      --text-footer: #FFF8E1;
+      --text-footer-address: #B09BB0;
+      --border-light: #5A4A6A;
+      --border-card: #5A4A6A;
+      --shadow: rgba(0, 0, 0, 0.3);
+      --shadow-hover: rgba(0, 0, 0, 0.4);
+      --nav-hover-bg: rgba(255, 248, 225, 0.08);
+      --nav-border: rgba(255, 248, 225, 0.1);
+      --divider-line: #5A4A6A;
+      --divider-dot: #B09BB0;
+      --icon-fill: #B09BB0;
+      --btn-toggle-bg: rgba(255, 248, 225, 0.10);
+      --btn-toggle-hover: rgba(255, 248, 225, 0.20);
+      --btn-toggle-border: rgba(255, 248, 225, 0.15);
+      --btn-toggle-color: #F0E6C8;
+      --btn-toggle-active-bg: #F0E6C8;
+      --btn-toggle-active-color: #2C1F3A;
+      --news-border-left: #B09BB0;
+      --news-date-color: #B09BB0;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
     body {
-      background-color: #FFF8E1;
+      background-color: var(--bg-body);
       font-family: 'Unbounded', sans-serif;
-      color: #4B2C66;
+      color: var(--text-primary);
       line-height: 1.7;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      transition: background-color 0.3s, color 0.3s;
     }
     a {
       text-decoration: none;
@@ -32,15 +97,23 @@
       list-style: none;
     }
 
+    /* ===== Header ===== */
     .site-header {
-      background-color: #4B2C66;
-      padding: 1.6rem 3rem 1.5rem;
+      background-color: var(--bg-header);
+      padding: 1.2rem 3rem 1.2rem;
       display: flex;
       flex-direction: column;
-      gap: 1.3rem;
-      box-shadow: 0 3px 12px rgba(75, 44, 102, 0.25);
+      gap: 1.2rem;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s;
     }
     .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.9rem;
+    }
+    .header-left {
       display: flex;
       align-items: center;
       gap: 0.9rem;
@@ -54,19 +127,81 @@
     .site-title {
       font-size: 1.4rem;
       font-weight: 600;
-      color: #FFF8E1;
+      color: var(--text-header);
       letter-spacing: 0.02em;
       line-height: 1.3;
+      transition: color 0.3s;
     }
     .site-title small {
       display: block;
       font-size: 0.68rem;
-      font-weight: 300; /* возвращён тонкий */
-      color: #E6D5B8;
+      font-weight: 300;
+      color: var(--text-footer-address);
       letter-spacing: 0.08em;
       margin-top: 4px;
       text-transform: uppercase;
+      transition: color 0.3s;
     }
+
+    /* Блок переключателей */
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-shrink: 0;
+    }
+    .toggle-group {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: var(--btn-toggle-bg);
+      border-radius: 30px;
+      padding: 0.2rem 0.3rem;
+      border: 1px solid var(--btn-toggle-border);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .toggle-btn {
+      background: transparent;
+      border: none;
+      padding: 0.3rem 0.8rem;
+      border-radius: 30px;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--btn-toggle-color);
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s, transform 0.1s;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      line-height: 1.4;
+    }
+    .toggle-btn:hover {
+      background: var(--btn-toggle-hover);
+    }
+    .toggle-btn.active {
+      background: var(--btn-toggle-active-bg);
+      color: var(--btn-toggle-active-color);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .toggle-btn:active {
+      transform: scale(0.94);
+    }
+    .toggle-separator {
+      width: 1px;
+      height: 20px;
+      background: var(--btn-toggle-border);
+      transition: background 0.3s;
+    }
+
+    /* Иконки темы – символы вместо смайлов */
+    .theme-icon {
+      display: inline-block;
+      font-size: 0.9rem;
+      line-height: 1;
+      margin-right: 0.2rem;
+    }
+
+    /* ===== Навигация ===== */
     .main-nav {
       width: 100%;
     }
@@ -80,26 +215,27 @@
       text-align: center;
       padding: 0.65rem 0.5rem;
       font-size: 0.78rem;
-      font-weight: 500; /* возвращён исходный */
-      color: rgba(255, 248, 225, 0.75);
+      font-weight: 500;
+      color: var(--text-footer);
       border-radius: 12px;
-      border: 1px solid rgba(255, 248, 225, 0.15);
-      transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+      border: 1px solid var(--nav-border);
+      transition: color 0.2s, background-color 0.2s, border-color 0.2s, background-color 0.3s;
       letter-spacing: 0.02em;
       white-space: nowrap;
     }
     .nav-list a:hover {
-      color: #FFF8E1;
-      background-color: rgba(255, 248, 225, 0.1);
+      color: var(--text-header);
+      background-color: var(--nav-hover-bg);
       border-color: rgba(255, 248, 225, 0.3);
     }
     .nav-list a.active-page {
-      color: #4B2C66;
+      color: var(--btn-toggle-active-color);
       font-weight: 600;
-      background-color: #FFF8E1;
-      border-color: #FFF8E1;
+      background-color: var(--btn-toggle-active-bg);
+      border-color: var(--btn-toggle-active-bg);
     }
 
+    /* ===== Main ===== */
     .main-content {
       flex: 1;
       padding: 3rem 3rem 4rem;
@@ -110,14 +246,16 @@
     .page-title {
       font-size: 2rem;
       font-weight: 700;
-      color: #4B2C66;
+      color: var(--text-primary);
       margin-bottom: 0.5rem;
+      transition: color 0.3s;
     }
     .page-subtitle {
       font-size: 0.9rem;
-      font-weight: 300; /* возвращён тонкий */
-      color: #7A6393;
+      font-weight: 300;
+      color: var(--text-muted);
       margin-bottom: 2.2rem;
+      transition: color 0.3s;
     }
 
     .news-list {
@@ -126,51 +264,82 @@
       gap: 1.5rem;
     }
     .news-card {
-      background-color: #ffffff;
+      background-color: var(--bg-news-card);
       border-radius: 18px;
       padding: 2rem 2.2rem;
-      box-shadow: 0 4px 18px rgba(75, 44, 102, 0.07);
-      border-left: 5px solid #6A5DC2;
+      box-shadow: 0 4px 18px var(--shadow);
+      border-left: 5px solid var(--news-border-left);
+      transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
     }
     .news-date {
       font-size: 0.68rem;
-      font-weight: 500; /* возвращён исходный */
-      color: #6A5DC2;
+      font-weight: 500;
+      color: var(--news-date-color);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 0.6rem;
+      transition: color 0.3s;
     }
     .news-card h2 {
       font-size: 1.1rem;
-      font-weight: 600; /* оставлен, так как был таким */
-      color: #4B2C66;
+      font-weight: 600;
+      color: var(--text-primary);
       margin-bottom: 0.7rem;
+      transition: color 0.3s;
     }
     .news-card p {
       font-size: 0.9rem;
-      font-weight: 300; /* возвращён тонкий */
-      color: #3A2550;
+      font-weight: 300;
+      color: var(--text-secondary);
       line-height: 1.8;
+      transition: color 0.3s;
     }
 
     .site-footer {
-      background-color: #4B2C66;
-      color: #FFF8E1;
+      background-color: var(--bg-footer);
+      color: var(--text-footer);
       text-align: center;
       padding: 1.8rem 1.5rem;
       font-size: 0.78rem;
-      font-weight: 300; /* возвращён тонкий */
+      font-weight: 300;
       letter-spacing: 0.03em;
       margin-top: auto;
       line-height: 1.9;
+      transition: background-color 0.3s, color 0.3s;
     }
     .site-footer .footer-address {
-      color: #E6D5B8;
+      color: var(--text-footer-address);
+      transition: color 0.3s;
     }
 
     @media (max-width: 900px) {
       .site-header {
         padding: 1.2rem 1.4rem;
+      }
+      .header-top {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .header-left {
+        flex: 1 1 auto;
+      }
+      .header-controls {
+        flex: 0 1 auto;
+        margin-left: auto;
+        gap: 0.5rem;
+      }
+      .toggle-btn {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.6rem;
+      }
+      .toggle-group {
+        padding: 0.15rem 0.25rem;
+      }
+      .site-title {
+        font-size: 1.1rem;
+      }
+      .site-title small {
+        font-size: 0.6rem;
       }
       .nav-list {
         grid-template-columns: repeat(3, 1fr);
@@ -189,97 +358,254 @@
         font-size: 1.7rem;
       }
     }
+    @media (max-width: 480px) {
+      .header-controls {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        width: 100%;
+      }
+      .toggle-group {
+        flex: 1 1 auto;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header class="site-header">
     <div class="header-top">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралескі">
-        <g transform="translate(28, 32) scale(0.65) rotate(15)">
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(51)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(102)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(154)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(206)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(257)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(308)" />
-          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
-          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
-        </g>
-        <g transform="translate(72, 38) scale(0.78) rotate(-20)">
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(51)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(102)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(154)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(206)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(257)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(308)" />
-          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
-          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
-        </g>
-        <g transform="translate(48, 66) scale(0.92) rotate(5)">
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(51)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(102)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(154)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(206)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(257)" />
-          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(308)" />
-          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
-          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
-        </g>
-      </svg>
-      <div class="site-title">
-        Хор «Пралескі»
-        <small>ДМШИ №2 г. Брест</small>
+      <div class="header-left">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралескі">
+          <g transform="translate(28, 32) scale(0.65) rotate(15)">
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(51)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(102)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(154)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(206)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(257)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(308)" />
+            <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+            <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+          </g>
+          <g transform="translate(72, 38) scale(0.78) rotate(-20)">
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(51)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(102)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(154)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(206)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(257)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(308)" />
+            <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+            <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+          </g>
+          <g transform="translate(48, 66) scale(0.92) rotate(5)">
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(51)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(102)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(154)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(206)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(257)" />
+            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(308)" />
+            <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+            <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+          </g>
+        </svg>
+        <div class="site-title">
+          <span data-lang-key="site-title">Хор «Пралескі»</span>
+          <small data-lang-key="site-subtitle">ДМШИ №2 г. Брест</small>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <!-- Переключатель языка -->
+        <div class="toggle-group" role="group" aria-label="Выбор языка">
+          <button class="toggle-btn active" data-lang-btn="ru" aria-label="Русский">Рус</button>
+          <span class="toggle-separator"></span>
+          <button class="toggle-btn" data-lang-btn="be" aria-label="Беларуская">Бел</button>
+        </div>
+        <!-- Переключатель темы -->
+        <div class="toggle-group" role="group" aria-label="Переключение темы">
+          <button class="toggle-btn active" data-theme-btn="light" aria-label="Светлая тема">
+            <span class="theme-icon">☀</span> Свет
+          </button>
+          <span class="toggle-separator"></span>
+          <button class="toggle-btn" data-theme-btn="dark" aria-label="Тёмная тема">
+            <span class="theme-icon">☽</span> Тём
+          </button>
+        </div>
       </div>
     </div>
+
     <nav class="main-nav" aria-label="Основное меню">
       <ul class="nav-list">
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="news.html" class="active-page">Новости</a></li>
-        <li><a href="history.html">История</a></li>
-        <li><a href="achievements.html">Достижения</a></li>
-        <li><a href="recordings.html">Записи</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
+        <li><a href="index.html" data-lang-key="nav-home">Главная</a></li>
+        <li><a href="news.html" class="active-page" data-lang-key="nav-news">Новости</a></li>
+        <li><a href="history.html" data-lang-key="nav-history">История</a></li>
+        <li><a href="achievements.html" data-lang-key="nav-achievements">Достижения</a></li>
+        <li><a href="recordings.html" data-lang-key="nav-recordings">Записи</a></li>
+        <li><a href="contacts.html" data-lang-key="nav-contacts">Контакты</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="main-content">
-    <h1 class="page-title">Новости</h1>
-    <p class="page-subtitle">События и выступления хора</p>
+    <h1 class="page-title" data-lang-key="page-title">Новости</h1>
+    <p class="page-subtitle" data-lang-key="page-subtitle">События и выступления хора</p>
 
     <div class="news-list">
-      <!-- 22 июня -->
+      <!-- Новость 1 -->
       <article class="news-card">
-        <div class="news-date">22 июня 2026</div>
-        <h2>Выступление в Брестской крепости</h2>
-        <p>В День памяти и скорби хор «Пралескі» выступил в мемориальном комплексе «Брестская крепость-герой». Песни о мужестве и мире звучали у стен легендарной цитадели.</p>
+        <div class="news-date" data-lang-key="news-date1">22 июня 2026</div>
+        <h2 data-lang-key="news-title1">Выступление в Брестской крепости</h2>
+        <p data-lang-key="news-text1">В День памяти и скорби хор «Пралескі» выступил в мемориальном комплексе «Брестская крепость-герой». Песни о мужестве и мире звучали у стен легендарной цитадели.</p>
       </article>
 
-      <!-- 22 мая -->
+      <!-- Новость 2 -->
       <article class="news-card">
-        <div class="news-date">22 мая 2026</div>
-        <h2>Юбилейный концерт к 30-летию хора</h2>
-        <p>Тридцатилетие коллектива отметили большим праздничным вечером. На сцену вышли выпускники разных лет, а зал был полон благодарных зрителей.</p>
+        <div class="news-date" data-lang-key="news-date2">22 мая 2026</div>
+        <h2 data-lang-key="news-title2">Юбилейный концерт к 30-летию хора</h2>
+        <p data-lang-key="news-text2">Тридцатилетие коллектива отметили большим праздничным вечером. На сцену вышли выпускники разных лет, а зал был полон благодарных зрителей.</p>
       </article>
 
-      <!-- 4 апреля -->
+      <!-- Новость 3 -->
       <article class="news-card">
-        <div class="news-date">4 апреля 2026</div>
-        <h2>Звание «образцовый» — подтверждено!</h2>
-        <p>Хор «Пралескі» успешно защитил почётное звание «образцовый любительский коллектив». Это признание высокого мастерства и верности традициям.</p>
+        <div class="news-date" data-lang-key="news-date3">4 апреля 2026</div>
+        <h2 data-lang-key="news-title3">Звание «образцовый» — подтверждено!</h2>
+        <p data-lang-key="news-text3">Хор «Пралескі» успешно защитил почётное звание «образцовый любительский коллектив». Это признание высокого мастерства и верности традициям.</p>
       </article>
     </div>
   </main>
 
   <footer class="site-footer">
-    <p>ГУО «Детская музыкальная школа искусств №2 г. Бреста»</p>
-    <p class="footer-address">ул. Московская, 300, 224005 Брест, Беларусь</p>
-    <p>&copy; 2026 Хор «Пралескі». Все права защищены.</p>
+    <p data-lang-key="footer-school">ГУО «Детская музыкальная школа искусств №2 г. Бреста»</p>
+    <p class="footer-address" data-lang-key="footer-address">ул. Московская, 300, 224005 Брест, Беларусь</p>
+    <p data-lang-key="footer-copyright">&copy; 2026 Хор «Пралескі». Все права защищены.</p>
   </footer>
 
+  <script>
+    (function() {
+      // ---------- ПЕРЕКЛЮЧЕНИЕ ТЕМЫ ----------
+      const themeBtns = document.querySelectorAll('[data-theme-btn]');
+      const body = document.body;
+
+      function setTheme(theme) {
+        if (theme === 'dark') {
+          body.classList.add('dark-theme');
+        } else {
+          body.classList.remove('dark-theme');
+        }
+        themeBtns.forEach(btn => {
+          const val = btn.getAttribute('data-theme-btn');
+          if (val === theme) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+        localStorage.setItem('pra-leski-theme', theme);
+      }
+
+      themeBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const theme = this.getAttribute('data-theme-btn');
+          setTheme(theme);
+        });
+      });
+
+      const savedTheme = localStorage.getItem('pra-leski-theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      }
+
+      // ---------- ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА ----------
+      const langBtns = document.querySelectorAll('[data-lang-btn]');
+      const translations = {
+        ru: {
+          'site-title': 'Хор «Пралескі»',
+          'site-subtitle': 'ДМШИ №2 г. Брест',
+          'nav-home': 'Главная',
+          'nav-news': 'Новости',
+          'nav-history': 'История',
+          'nav-achievements': 'Достижения',
+          'nav-recordings': 'Записи',
+          'nav-contacts': 'Контакты',
+          'page-title': 'Новости',
+          'page-subtitle': 'События и выступления хора',
+          'news-date1': '22 июня 2026',
+          'news-title1': 'Выступление в Брестской крепости',
+          'news-text1': 'В День памяти и скорби хор «Пралескі» выступил в мемориальном комплексе «Брестская крепость-герой». Песни о мужестве и мире звучали у стен легендарной цитадели.',
+          'news-date2': '22 мая 2026',
+          'news-title2': 'Юбилейный концерт к 30-летию хора',
+          'news-text2': 'Тридцатилетие коллектива отметили большим праздничным вечером. На сцену вышли выпускники разных лет, а зал был полон благодарных зрителей.',
+          'news-date3': '4 апреля 2026',
+          'news-title3': 'Звание «образцовый» — подтверждено!',
+          'news-text3': 'Хор «Пралескі» успешно защитил почётное звание «образцовый любительский коллектив». Это признание высокого мастерства и верности традициям.',
+          'footer-school': 'ГУО «Детская музыкальная школа искусств №2 г. Бреста»',
+          'footer-address': 'ул. Московская, 300, 224005 Брест, Беларусь',
+          'footer-copyright': '© 2026 Хор «Пралескі». Все права защищены.'
+        },
+        be: {
+          'site-title': 'Хор «Пралескі»',
+          'site-subtitle': 'ДМШІ №2 г. Брэст',
+          'nav-home': 'Галоўная',
+          'nav-news': 'Навіны',
+          'nav-history': 'Гісторыя',
+          'nav-achievements': 'Дасягненні',
+          'nav-recordings': 'Запісы',
+          'nav-contacts': 'Кантакты',
+          'page-title': 'Навіны',
+          'page-subtitle': 'Падзеі і выступы хору',
+          'news-date1': '22 чэрвеня 2026',
+          'news-title1': 'Выступленне ў Брэсцкай крэпасці',
+          'news-text1': 'У Дзень памяці і смутку хор «Пралескі» выступіў у мемарыяльным комплексе «Брэсцкая крэпасць-герой». Песні пра мужнасць і мір гучалі ля сцен легендарнай цытадэлі.',
+          'news-date2': '22 мая 2026',
+          'news-title2': 'Юбілейны канцэрт да 30-годдзя хору',
+          'news-text2': 'Трыццацігоддзе калектыву адзначылі вялікім святочным вечарам. На сцэну выйшлі выпускнікі розных гадоў, а зала была поўная ўдзячных гледачоў.',
+          'news-date3': '4 красавіка 2026',
+          'news-title3': 'Званне «узорны» — пацверджана!',
+          'news-text3': 'Хор «Пралескі» паспяхова абараніў ганаровае званне «узорны аматарскі калектыў». Гэта прызнанне высокага майстэрства і вернасці традыцыям.',
+          'footer-school': 'ДУА «Дзіцячая музычная школа мастацтваў №2 г. Брэста»',
+          'footer-address': 'вул. Маскоўская, 300, 224005 Брэст, Беларусь',
+          'footer-copyright': '© 2026 Хор «Пралескі». Усе правы абаронены.'
+        }
+      };
+
+      function setLanguage(lang) {
+        const elements = document.querySelectorAll('[data-lang-key]');
+        elements.forEach(el => {
+          const key = el.getAttribute('data-lang-key');
+          if (translations[lang] && translations[lang][key] !== undefined) {
+            el.innerHTML = translations[lang][key];
+          }
+        });
+        langBtns.forEach(btn => {
+          const val = btn.getAttribute('data-lang-btn');
+          if (val === lang) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+        localStorage.setItem('pra-leski-lang', lang);
+      }
+
+      langBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const lang = this.getAttribute('data-lang-btn');
+          setLanguage(lang);
+        });
+      });
+
+      const savedLang = localStorage.getItem('pra-leski-lang');
+      if (savedLang && translations[savedLang]) {
+        setLanguage(savedLang);
+      } else {
+        setLanguage('ru');
+      }
+    })();
+  </script>
 </body>
 </html>
