@@ -1,6 +1,6 @@
 /* ===== CSS Переменные для тем ===== */
 :root {
-  /* Светлая тема (по умолчанию) */
+  /* Светлая тема (оригинал) */
   --bg-color: #FFF8E1;
   --text-color: #4B2C66;
   --text-light: #7A6393;
@@ -10,39 +10,50 @@
   --header-text-muted: #E6D5B8;
   --card-bg: #ffffff;
   --card-border: #F0E6C8;
+  --card-shadow: rgba(75, 44, 102, 0.07);
+  --card-shadow-hover: rgba(75, 44, 102, 0.12);
   --accent: #6A5DC2;
-  --accent-hover: #5a4db2;
+  --accent-alt: #6E95E8;
+  --accent-alt2: #7D73E6;
   --divider-line: #E6D5B8;
-  --shadow: rgba(75, 44, 102, 0.07);
-  --shadow-hover: rgba(75, 44, 102, 0.12);
   --header-shadow: rgba(75, 44, 102, 0.25);
   --nav-active-bg: #FFF8E1;
   --nav-hover-bg: rgba(255, 248, 225, 0.1);
-  --error-bg: #ffffff;
+  --nav-border: rgba(255, 248, 225, 0.15);
+  --nav-border-hover: rgba(255, 248, 225, 0.3);
+  --nav-text: rgba(255, 248, 225, 0.75);
+  --logo-circle-fill: #6A5DC2;
+  --hero-circle-fill: #6A5DC2;
 }
 
 [data-theme="dark"] {
-  --bg-color: #1a1a2e;
-  --text-color: #e0e0e0;
-  --text-light: #a0a0a0;
-  --text-dark: #f0f0f0;
-  --header-bg: #16213e;
-  --header-text: #e0e0e0;
-  --header-text-muted: #b0b0b0;
-  --card-bg: #2d2d44;
-  --card-border: #3d3d5c;
-  --accent: #8a7df2;
-  --accent-hover: #a094f5;
-  --divider-line: #3d3d5c;
-  --shadow: rgba(0, 0, 0, 0.3);
-  --shadow-hover: rgba(0, 0, 0, 0.5);
-  --header-shadow: rgba(0, 0, 0, 0.5);
-  --nav-active-bg: #2d2d44;
-  --nav-hover-bg: rgba(138, 125, 242, 0.15);
-  --error-bg: #2d2d44;
+  /* Контрастная тёмная тема */
+  --bg-color: #16162a;
+  --text-color: #ffffff;
+  --text-light: #c5c5d8;
+  --text-dark: #f0f0f8;
+  --header-bg: #232344;
+  --header-text: #ffffff;
+  --header-text-muted: #d0d0e0;
+  --card-bg: #2a2a4a;
+  --card-border: #3d3d66;
+  --card-shadow: rgba(0, 0, 0, 0.35);
+  --card-shadow-hover: rgba(0, 0, 0, 0.55);
+  --accent: #a699ff;
+  --accent-alt: #8fb8ff;
+  --accent-alt2: #b0a6ff;
+  --divider-line: #3d3d66;
+  --header-shadow: rgba(0, 0, 0, 0.6);
+  --nav-active-bg: #FFF8E1;
+  --nav-hover-bg: rgba(166, 153, 255, 0.15);
+  --nav-border: rgba(255, 255, 255, 0.15);
+  --nav-border-hover: rgba(166, 153, 255, 0.4);
+  --nav-text: rgba(255, 255, 255, 0.85);
+  --logo-circle-fill: #a699ff;
+  --hero-circle-fill: #a699ff;
 }
 
-/* Базовые стили */
+/* Базовые стили (оригинал) */
 * {
   margin: 0;
   padding: 0;
@@ -69,44 +80,7 @@ ul {
   list-style: none;
 }
 
-/* ===== Кнопки управления (тема + язык) ===== */
-.controls {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  z-index: 1000;
-}
-
-.theme-toggle,
-.lang-switcher {
-  padding: 0.5rem 0.8rem;
-  border-radius: 8px;
-  border: 1px solid var(--card-border);
-  background-color: var(--card-bg);
-  color: var(--text-color);
-  cursor: pointer;
-  font-family: 'Unbounded', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.lang-switcher {
-  min-width: 70px;
-}
-
-.theme-toggle:hover,
-.lang-switcher:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--shadow-hover);
-  background-color: var(--accent);
-  color: var(--header-text);
-  border-color: var(--accent);
-}
-
-/* ===== Header ===== */
+/* ===== Header (оригинал) ===== */
 .site-header {
   background-color: var(--header-bg);
   padding: 1.6rem 3rem 1.5rem;
@@ -114,10 +88,18 @@ ul {
   flex-direction: column;
   gap: 1.3rem;
   box-shadow: 0 3px 12px var(--header-shadow);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.header-top-left {
   display: flex;
   align-items: center;
   gap: 0.9rem;
@@ -128,6 +110,11 @@ ul {
   height: 50px;
   display: block;
   flex-shrink: 0;
+}
+
+.logo-icon circle {
+  fill: var(--logo-circle-fill);
+  transition: fill 0.3s ease;
 }
 
 .site-title {
@@ -150,7 +137,63 @@ ul {
   transition: color 0.3s ease;
 }
 
-/* ===== Navigation ===== */
+/* ===== Переключатели в шапке ===== */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle,
+.lang-select {
+  background-color: rgba(255, 248, 225, 0.08);
+  color: var(--header-text);
+  border: 1px solid rgba(255, 248, 225, 0.25);
+  border-radius: 10px;
+  padding: 0.5rem 0.85rem;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.lang-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 1.6rem;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFF8E1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 12px;
+}
+
+.lang-select option {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  padding: 0.5rem;
+}
+
+.theme-toggle:hover,
+.lang-select:hover {
+  background-color: rgba(255, 248, 225, 0.18);
+  border-color: rgba(255, 248, 225, 0.45);
+  color: var(--header-text);
+}
+
+.theme-toggle:focus,
+.lang-select:focus {
+  outline: none;
+  border-color: rgba(255, 248, 225, 0.55);
+}
+
+/* ===== Navigation (оригинал) ===== */
 .main-nav {
   width: 100%;
 }
@@ -167,9 +210,9 @@ ul {
   padding: 0.65rem 0.5rem;
   font-size: 0.78rem;
   font-weight: 500;
-  color: rgba(255, 248, 225, 0.75);
+  color: var(--nav-text);
   border-radius: 12px;
-  border: 1px solid rgba(255, 248, 225, 0.15);
+  border: 1px solid var(--nav-border);
   transition: color 0.2s, background-color 0.2s, border-color 0.2s;
   letter-spacing: 0.02em;
   white-space: nowrap;
@@ -178,7 +221,7 @@ ul {
 .nav-list a:hover {
   color: var(--header-text);
   background-color: var(--nav-hover-bg);
-  border-color: rgba(255, 248, 225, 0.3);
+  border-color: var(--nav-border-hover);
 }
 
 .nav-list a.active-page {
@@ -188,7 +231,7 @@ ul {
   border-color: var(--nav-active-bg);
 }
 
-/* ===== Main Content ===== */
+/* ===== Main Content (оригинал) ===== */
 .main-content {
   flex: 1;
   padding: 3rem 3rem 2rem;
@@ -213,12 +256,12 @@ ul {
   transition: color 0.3s ease;
 }
 
-/* ===== Welcome Block ===== */
+/* ===== Welcome Block (оригинал) ===== */
 .welcome-block {
   background-color: var(--card-bg);
   border-radius: 18px;
   padding: 2.8rem 2.5rem;
-  box-shadow: 0 4px 18px var(--shadow);
+  box-shadow: 0 4px 18px var(--card-shadow);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -252,7 +295,12 @@ ul {
   height: 100px;
 }
 
-/* ===== Divider ===== */
+.hero-svg circle,
+.hero-svg path {
+  transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+/* ===== Divider (оригинал) ===== */
 .divider {
   display: flex;
   align-items: center;
@@ -276,7 +324,7 @@ ul {
   transition: background-color 0.3s ease;
 }
 
-/* ===== Find Us Card ===== */
+/* ===== Find Us Card (оригинал) ===== */
 .find-us-section {
   display: flex;
   justify-content: center;
@@ -286,7 +334,7 @@ ul {
   background-color: var(--card-bg);
   border-radius: 14px;
   padding: 0.9rem 1.8rem;
-  box-shadow: 0 3px 12px var(--shadow);
+  box-shadow: 0 3px 12px var(--card-shadow);
   border: 1px solid var(--card-border);
   display: inline-flex;
   align-items: center;
@@ -294,12 +342,12 @@ ul {
   font-weight: 500;
   font-size: 0.75rem;
   color: var(--text-color);
-  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s ease;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .find-us-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px var(--shadow-hover);
+  box-shadow: 0 6px 16px var(--card-shadow-hover);
 }
 
 .find-us-card svg {
@@ -318,12 +366,12 @@ ul {
   transition: color 0.3s ease;
 }
 
-/* ===== Contact Card ===== */
+/* ===== Contact Card (оригинал) ===== */
 .contact-card {
   background-color: var(--card-bg);
   border-radius: 18px;
   padding: 2.5rem 2.5rem;
-  box-shadow: 0 4px 18px var(--shadow);
+  box-shadow: 0 4px 18px var(--card-shadow);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -367,10 +415,10 @@ ul {
 }
 
 .contact-text a:hover {
-  color: var(--accent-hover);
+  filter: brightness(1.2);
 }
 
-/* ===== Achievements Grid ===== */
+/* ===== Achievements Grid (оригинал) ===== */
 .achievements-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -381,17 +429,17 @@ ul {
   background-color: var(--card-bg);
   border-radius: 18px;
   padding: 1.8rem 1.8rem;
-  box-shadow: 0 4px 18px var(--shadow);
+  box-shadow: 0 4px 18px var(--card-shadow);
   border-top: 4px solid var(--accent);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .achievement-card:nth-child(2n) {
-  border-top-color: #6E95E8;
+  border-top-color: var(--accent-alt);
 }
 
 .achievement-card:nth-child(3n) {
-  border-top-color: #7D73E6;
+  border-top-color: var(--accent-alt2);
 }
 
 .achievement-card h2 {
@@ -410,7 +458,7 @@ ul {
   transition: color 0.3s ease;
 }
 
-/* ===== News Cards ===== */
+/* ===== News Grid ===== */
 .news-grid {
   display: grid;
   gap: 1.5rem;
@@ -420,7 +468,7 @@ ul {
   background-color: var(--card-bg);
   border-radius: 18px;
   padding: 1.8rem 2rem;
-  box-shadow: 0 4px 18px var(--shadow);
+  box-shadow: 0 4px 18px var(--card-shadow);
   border-left: 4px solid var(--accent);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -455,16 +503,16 @@ ul {
   background-color: var(--card-bg);
   border-radius: 14px;
   padding: 1.5rem 1.8rem;
-  box-shadow: 0 3px 12px var(--shadow);
+  box-shadow: 0 3px 12px var(--card-shadow);
   display: flex;
   align-items: center;
   gap: 1rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s ease;
 }
 
 .recording-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px var(--shadow-hover);
+  box-shadow: 0 6px 16px var(--card-shadow-hover);
 }
 
 .recording-icon {
@@ -476,6 +524,7 @@ ul {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: background-color 0.3s ease;
 }
 
 .recording-icon svg {
@@ -502,7 +551,7 @@ ul {
   background-color: var(--card-bg);
   border-radius: 18px;
   padding: 2.5rem;
-  box-shadow: 0 4px 18px var(--shadow);
+  box-shadow: 0 4px 18px var(--card-shadow);
   margin-bottom: 2rem;
   transition: background-color 0.3s ease;
 }
@@ -561,9 +610,10 @@ ul {
 .error-block {
   text-align: center;
   padding: 4rem 2rem;
-  background-color: var(--error-bg);
+  background-color: var(--card-bg);
   border-radius: 18px;
-  box-shadow: 0 4px 18px var(--shadow);
+  box-shadow: 0 4px 18px var(--card-shadow);
+  transition: background-color 0.3s ease;
 }
 
 .error-code {
@@ -593,15 +643,15 @@ ul {
   color: white;
   border-radius: 12px;
   font-weight: 500;
-  transition: background-color 0.2s, transform 0.2s;
+  transition: filter 0.2s, transform 0.2s;
 }
 
 .error-link:hover {
-  background-color: var(--accent-hover);
+  filter: brightness(1.15);
   transform: translateY(-2px);
 }
 
-/* ===== Footer ===== */
+/* ===== Footer (оригинал) ===== */
 .site-footer {
   background-color: var(--header-bg);
   color: var(--header-text);
@@ -622,20 +672,18 @@ ul {
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
-  .controls {
-    top: 0.5rem;
-    right: 0.5rem;
-  }
-  
-  .theme-toggle,
-  .lang-switcher {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.7rem;
-  }
-  
   .site-header {
     padding: 1.2rem 1.4rem;
-    padding-top: 3.5rem;
+  }
+  
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header-controls {
+    width: 100%;
+    justify-content: flex-start;
   }
   
   .nav-list {
@@ -686,9 +734,15 @@ ul {
 }
 
 @media (max-width: 500px) {
-  .controls {
-    flex-direction: column;
-    gap: 0.3rem;
+  .header-controls {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  
+  .theme-toggle,
+  .lang-select {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.68rem;
   }
   
   .nav-list {
