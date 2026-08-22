@@ -4,91 +4,756 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Хор «Пралескі» — ДМШИ №2 Брест</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="manifest" href="site.webmanifest">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="theme.js"></script>
-  <script src="translations.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #FFF8E1;
+      font-family: 'Unbounded', sans-serif;
+      color: #4B2C66;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+
+    /* ===== Header ===== */
+    .site-header {
+      background-color: #4B2C66;
+      padding: 1.6rem 3rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+      box-shadow: 0 3px 12px rgba(75, 44, 102, 0.25);
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      display: block;
+      flex-shrink: 0;
+    }
+    .site-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #FFF8E1;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+    }
+    .site-title small {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: #E6D5B8;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+    .main-nav {
+      width: 100%;
+    }
+    .nav-list {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.5rem;
+    }
+    .nav-list a {
+      display: block;
+      text-align: center;
+      padding: 0.65rem 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255, 248, 225, 0.75);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 248, 225, 0.15);
+      transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .nav-list a:hover {
+      color: #FFF8E1;
+      background-color: rgba(255, 248, 225, 0.1);
+      border-color: rgba(255, 248, 225, 0.3);
+    }
+    .nav-list a.active-page {
+      color: #4B2C66;
+      font-weight: 600;
+      background-color: #FFF8E1;
+      border-color: #FFF8E1;
+    }
+
+    /* ===== Main ===== */
+    .main-content {
+      flex: 1;
+      padding: 3rem 3rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #4B2C66;
+      margin-bottom: 0.5rem;
+    }
+    .page-subtitle {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #7A6393;
+      margin-bottom: 2.2rem;
+    }
+
+    /* Welcome block */
+    .welcome-block {
+      background-color: #ffffff;
+      border-radius: 18px;
+      padding: 2.8rem 2.5rem;
+      box-shadow: 0 4px 18px rgba(75, 44, 102, 0.07);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .welcome-text {
+      flex: 1 1 280px;
+    }
+    .welcome-text p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: #3A2550;
+      margin-bottom: 1rem;
+      line-height: 1.85;
+    }
+    .welcome-text .highlight {
+      font-weight: 600;
+      color: #4B2C66;
+    }
+    .hero-svg {
+      flex: 0 0 auto;
+      width: 100px;
+      height: 100px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 2.2rem 0 1.8rem;
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background-color: #E6D5B8;
+    }
+    .divider-icon {
+      width: 8px;
+      height: 8px;
+      background-color: #6A5DC2;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ===== Уменьшенный блок "Как нас найти" (одна карточка) ===== */
+    .find-us-section {
+      display: flex;
+      justify-content: center;
+    }
+    .find-us-card {
+      background-color: #ffffff;
+      border-radius: 14px;
+      padding: 0.9rem 1.8rem;
+      box-shadow: 0 3px 12px rgba(75, 44, 102, 0.07);
+      border: 1px solid #F0E6C8;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 500;
+      font-size: 0.75rem;
+      color: #4B2C66;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .find-us-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(75, 44, 102, 0.12);
+    }
+    .find-us-card svg {
+      width: 22px;
+      height: 22px;
+      fill: #6A5DC2;
+      flex-shrink: 0;
+    }
+    .find-us-card .address {
+      font-weight: 300;
+      font-size: 0.65rem;
+      color: #7A6393;
+      margin-left: 0.3rem;
+    }
+
+    /* ===== Footer ===== */
+    .site-footer {
+      background-color: #4B2C66;
+      color: #FFF8E1;
+      text-align: center;
+      padding: 1.8rem 1.5rem;
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      margin-top: auto;
+      line-height: 1.9;
+    }
+    .site-footer .footer-address {
+      color: #E6D5B8;
+    }
+
+    @media (max-width: 900px) {
+      .site-header {
+        padding: 1.2rem 1.4rem;
+      }
+      .nav-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .nav-list a {
+        padding: 0.55rem 0.4rem;
+        font-size: 0.72rem;
+      }
+      .main-content {
+        padding: 2rem 1.4rem 1.5rem;
+      }
+      .welcome-block {
+        padding: 2rem 1.4rem;
+        flex-direction: column;
+        text-align: center;
+      }
+      .page-title {
+        font-size: 1.7rem;
+      }
+      .find-us-card {
+        font-size: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .find-us-card .address {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+      }
+    }
+  </style>
 </head>
 <body>
+
   <header class="site-header">
     <div class="header-top">
-      <div class="header-top-left">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралескі">
-          <circle cx="50" cy="50" r="45"/>
-          <text x="50" y="58" font-family="Unbounded, sans-serif" font-size="20" font-weight="600" fill="white" text-anchor="middle">П</text>
-        </svg>
-        <div class="site-title">
-          <span data-i18n="header.title">Хор «Пралескі»</span>
-          <small data-i18n="header.subtitle">ДМШИ №2 г. Брест</small>
-        </div>
-      </div>
-      <div class="header-controls">
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему">
-          <span>🌙</span><span>Тёмная</span>
-        </button>
-        <select class="lang-select" onchange="setLanguage(this.value)" aria-label="Выбор языка">
-          <option value="ru">🇷🇺 RU</option>
-          <option value="be">🇧🇾 BY</option>
-          <option value="en">🇬🇧 EN</option>
-        </select>
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралескі">
+        <g transform="translate(28, 32) scale(0.65) rotate(15)">
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(51)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(102)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(154)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(206)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(257)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(308)" />
+          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+        </g>
+        <g transform="translate(72, 38) scale(0.78) rotate(-20)">
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(51)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(102)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(154)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(206)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(257)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(308)" />
+          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+        </g>
+        <g transform="translate(48, 66) scale(0.92) rotate(5)">
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(51)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(102)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(154)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(206)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(257)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(308)" />
+          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+        </g>
+      </svg>
+      <div class="site-title">
+        Хор «Пралескі»
+        <small>ДМШИ №2 г. Брест</small>
       </div>
     </div>
+
     <nav class="main-nav" aria-label="Основное меню">
       <ul class="nav-list">
-        <li><a href="index.html" data-i18n-nav="home" class="active-page">Главная</a></li>
-        <li><a href="news.html" data-i18n-nav="news">Новости</a></li>
-        <li><a href="history.html" data-i18n-nav="history">История</a></li>
-        <li><a href="achievements.html" data-i18n-nav="achievements">Достижения</a></li>
-        <li><a href="recordings.html" data-i18n-nav="recordings">Записи</a></li>
-        <li><a href="contacts.html" data-i18n-nav="contacts">Контакты</a></li>
+        <li><a href="index.html" class="active-page">Главная</a></li>
+        <li><a href="news.html">Новости</a></li>
+        <li><a href="history.html">История</a></li>
+        <li><a href="achievements.html">Достижения</a></li>
+        <li><a href="recordings.html">Записи</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="main-content">
-    <h1 class="page-title" data-i18n="home.title">Добро пожаловать</h1>
-    <p class="page-subtitle" data-i18n="home.subtitle">Образцовый хоровой коллектив ДМШИ №2 города Бреста</p>
+    <h1 class="page-title">Добро пожаловать</h1>
+    <p class="page-subtitle">Образцовый хоровой коллектив ДМШИ №2 города Бреста</p>
 
     <div class="welcome-block">
       <div class="welcome-text">
-        <p data-i18n="home.paragraph1">Хор <span class="highlight">«Пралескі»</span> — творческий коллектив Детской музыкальной школы искусств №2. Мы объединяем юные голоса, увлечённость музыкой и бережное отношение к белорусской песенной традиции.</p>
-        <p data-i18n="home.paragraph2"><span class="highlight">Основан в 1991 году.</span> Лауреат городских, областных и республиканских конкурсов. Обладатель звания «образцовый хоровой коллектив».</p>
+        <p>
+          Хор <span class="highlight">«Пралескі»</span> — творческий коллектив Детской музыкальной школы искусств №2.
+          Мы объединяем юные голоса, увлечённость музыкой и бережное отношение к белорусской песенной традиции.
+        </p>
+        <p>
+          <span class="highlight">Основан в 1991 году.</span> Лауреат городских, областных и республиканских конкурсов.
+          Обладатель звания «образцовый хоровой коллектив».
+        </p>
       </div>
-      <svg class="hero-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="48" fill="var(--hero-circle-fill)" opacity="0.1"/>
-        <path d="M30 65 Q50 30 70 65" stroke="var(--hero-circle-fill)" stroke-width="3" fill="none"/>
-        <circle cx="35" cy="65" r="4" fill="var(--hero-circle-fill)"/>
-        <circle cx="50" cy="50" r="4" fill="var(--hero-circle-fill)"/>
-        <circle cx="65" cy="65" r="4" fill="var(--hero-circle-fill)"/>
-      </svg>
+      <div class="hero-svg" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="100" height="100">
+          <g transform="translate(50,50) scale(0.85)">
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#6E95E8" transform="rotate(0)" />
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#7D73E6" transform="rotate(51)" />
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#6A5DC2" transform="rotate(102)" />
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#6E95E8" transform="rotate(154)" />
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#7D73E6" transform="rotate(206)" />
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#6A5DC2" transform="rotate(257)" />
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#6E95E8" transform="rotate(308)" />
+            <circle cx="0" cy="0" r="7" fill="#4B2C66" />
+            <circle cx="0" cy="0" r="4.5" fill="#F0E6C8" />
+          </g>
+        </svg>
+      </div>
     </div>
 
     <div class="divider">
-      <div class="divider-line"></div>
-      <div class="divider-icon"></div>
-      <div class="divider-line"></div>
+      <span class="divider-line"></span>
+      <span class="divider-icon"></span>
+      <span class="divider-line"></span>
     </div>
 
+    <!-- Уменьшенный блок "Как нас найти" — одна карточка -->
     <div class="find-us-section">
-      <a href="address.html" class="find-us-card">
+      <!-- Ссылка заменена на /address -->
+      <a href="/address" class="find-us-card">
         <svg viewBox="0 0 24 24">
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
         </svg>
-        <span data-i18n="home.findUs">Как нас найти</span>
-        <span class="address" data-i18n="home.address">ул. Московская, 300</span>
+        <span>Как нас найти</span>
+        <span class="address">ул. Московская, 300</span>
       </a>
     </div>
   </main>
 
   <footer class="site-footer">
-    <p data-i18n="footer.school">ГУО «Детская музыкальная школа искусств №2 г. Бреста»</p>
-    <p class="footer-address" data-i18n="footer.address">ул. Московская, 300, 224005 Брест, Беларусь</p>
-    <p data-i18n="footer.copyright">© 2026 Хор «Пралескі». Все права защищены.</p>
+    <p>ГУО «Детская музыкальная школа искусств №2 г. Бреста»</p>
+    <p class="footer-address">ул. Московская, 300, 224005 Брест, Беларусь</p>
+    <p>&copy; 2026 Хор «Пралескі». Все права защищены.</p>
   </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Хор «Пралескі» — ДМШИ №2 Брест</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #FFF8E1;
+      font-family: 'Unbounded', sans-serif;
+      color: #4B2C66;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+
+    /* ===== Header ===== */
+    .site-header {
+      background-color: #4B2C66;
+      padding: 1.6rem 3rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+      box-shadow: 0 3px 12px rgba(75, 44, 102, 0.25);
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      display: block;
+      flex-shrink: 0;
+    }
+    .site-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #FFF8E1;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+    }
+    .site-title small {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: #E6D5B8;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+    .main-nav {
+      width: 100%;
+    }
+    .nav-list {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.5rem;
+    }
+    .nav-list a {
+      display: block;
+      text-align: center;
+      padding: 0.65rem 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255, 248, 225, 0.75);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 248, 225, 0.15);
+      transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .nav-list a:hover {
+      color: #FFF8E1;
+      background-color: rgba(255, 248, 225, 0.1);
+      border-color: rgba(255, 248, 225, 0.3);
+    }
+    .nav-list a.active-page {
+      color: #4B2C66;
+      font-weight: 600;
+      background-color: #FFF8E1;
+      border-color: #FFF8E1;
+    }
+
+    /* ===== Main ===== */
+    .main-content {
+      flex: 1;
+      padding: 3rem 3rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #4B2C66;
+      margin-bottom: 0.5rem;
+    }
+    .page-subtitle {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #7A6393;
+      margin-bottom: 2.2rem;
+    }
+
+    /* Welcome block */
+    .welcome-block {
+      background-color: #ffffff;
+      border-radius: 18px;
+      padding: 2.8rem 2.5rem;
+      box-shadow: 0 4px 18px rgba(75, 44, 102, 0.07);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .welcome-text {
+      flex: 1 1 280px;
+    }
+    .welcome-text p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: #3A2550;
+      margin-bottom: 1rem;
+      line-height: 1.85;
+    }
+    .welcome-text .highlight {
+      font-weight: 600;
+      color: #4B2C66;
+    }
+    .hero-svg {
+      flex: 0 0 auto;
+      width: 100px;
+      height: 100px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 2.2rem 0 1.8rem;
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background-color: #E6D5B8;
+    }
+    .divider-icon {
+      width: 8px;
+      height: 8px;
+      background-color: #6A5DC2;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ===== Уменьшенный блок "Как нас найти" (одна карточка) ===== */
+    .find-us-section {
+      display: flex;
+      justify-content: center;
+    }
+    .find-us-card {
+      background-color: #ffffff;
+      border-radius: 14px;
+      padding: 0.9rem 1.8rem;
+      box-shadow: 0 3px 12px rgba(75, 44, 102, 0.07);
+      border: 1px solid #F0E6C8;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 500;
+      font-size: 0.75rem;
+      color: #4B2C66;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .find-us-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(75, 44, 102, 0.12);
+    }
+    .find-us-card svg {
+      width: 22px;
+      height: 22px;
+      fill: #6A5DC2;
+      flex-shrink: 0;
+    }
+    .find-us-card .address {
+      font-weight: 300;
+      font-size: 0.65rem;
+      color: #7A6393;
+      margin-left: 0.3rem;
+    }
+
+    /* ===== Footer ===== */
+    .site-footer {
+      background-color: #4B2C66;
+      color: #FFF8E1;
+      text-align: center;
+      padding: 1.8rem 1.5rem;
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      margin-top: auto;
+      line-height: 1.9;
+    }
+    .site-footer .footer-address {
+      color: #E6D5B8;
+    }
+
+    @media (max-width: 900px) {
+      .site-header {
+        padding: 1.2rem 1.4rem;
+      }
+      .nav-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .nav-list a {
+        padding: 0.55rem 0.4rem;
+        font-size: 0.72rem;
+      }
+      .main-content {
+        padding: 2rem 1.4rem 1.5rem;
+      }
+      .welcome-block {
+        padding: 2rem 1.4rem;
+        flex-direction: column;
+        text-align: center;
+      }
+      .page-title {
+        font-size: 1.7rem;
+      }
+      .find-us-card {
+        font-size: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .find-us-card .address {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-top">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралескі">
+        <g transform="translate(28, 32) scale(0.65) rotate(15)">
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(51)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(102)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(154)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(206)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(257)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(308)" />
+          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+        </g>
+        <g transform="translate(72, 38) scale(0.78) rotate(-20)">
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(51)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(102)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(154)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(206)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(257)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(308)" />
+          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+        </g>
+        <g transform="translate(48, 66) scale(0.92) rotate(5)">
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(51)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(102)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(154)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(206)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(257)" />
+          <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(308)" />
+          <circle cx="0" cy="0" r="8" fill="#4B2C66" />
+          <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
+        </g>
+      </svg>
+      <div class="site-title">
+        Хор «Пралескі»
+        <small>ДМШИ №2 г. Брест</small>
+      </div>
+    </div>
+
+    <nav class="main-nav" aria-label="Основное меню">
+      <ul class="nav-list">
+        <li><a href="index.html" class="active-page">Главная</a></li>
+        <li><a href="news.html">Новости</a></li>
+        <li><a href="history.html">История</a></li>
+        <li><a href="achievements.html">Достижения</a></li>
+        <li><a href="recordings.html">Записи</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <h1 class="page-title">Добро пожаловать</h1>
+    <p class="page-subtitle">Образцовый хоровой коллектив ДМШИ №2 города Бреста</p>
+
+    <div class="welcome-block">
+      <div class="welcome-text">
+        <p>
+          Хор <span class="highlight">«Пралескі»</span> — творческий коллектив Детской музыкальной школы искусств №2.
+          Мы объединяем юные голоса, увлечённость музыкой и бережное отношение к белорусской песенной традиции.
+        </p>
+        <p>
+          <span class="highlight">Основан в 1991 году.</span> Лауреат городских, областных и республиканских конкурсов.
+          Обладатель звания «образцовый хоровой коллектив».
+        </p>
+      </div>
+      <div class="hero-svg" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="100" height="100">
+          <g transform="translate(50,50) scale(0.85)">
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#6E95E8" transform="rotate(0)" />
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#7D73E6" transform="rotate(51)" />
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#6A5DC2" transform="rotate(102)" />
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#6E95E8" transform="rotate(154)" />
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#7D73E6" transform="rotate(206)" />
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#6A5DC2" transform="rotate(257)" />
+            <ellipse cx="0" cy="-18" rx="7" ry="16" fill="#6E95E8" transform="rotate(308)" />
+            <circle cx="0" cy="0" r="7" fill="#4B2C66" />
+            <circle cx="0" cy="0" r="4.5" fill="#F0E6C8" />
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="divider">
+      <span class="divider-line"></span>
+      <span class="divider-icon"></span>
+      <span class="divider-line"></span>
+    </div>
+
+    <!-- Уменьшенный блок "Как нас найти" — одна карточка -->
+    <div class="find-us-section">
+      <!-- Ссылка заменена на /address -->
+      <a href="/address" class="find-us-card">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+        </svg>
+        <span>Как нас найти</span>
+        <span class="address">ул. Московская, 300</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>ГУО «Детская музыкальная школа искусств №2 г. Бреста»</p>
+    <p class="footer-address">ул. Московская, 300, 224005 Брест, Беларусь</p>
+    <p>&copy; 2026 Хор «Пралескі». Все права защищены.</p>
+  </footer>
+
 </body>
 </html>
