@@ -1,4 +1,4 @@
-// Сохранение и переключение темы
+// Инициализация темы из localStorage
 (function() {
   const savedTheme = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', savedTheme);
@@ -10,7 +10,6 @@ function toggleTheme() {
   document.documentElement.setAttribute('data-theme', newTheme);
   localStorage.setItem('theme', newTheme);
   
-  // Обновить текст кнопки
   updateThemeButtonText();
 }
 
@@ -22,13 +21,14 @@ function updateThemeButtonText() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
   
   if (typeof translations !== 'undefined') {
-    btn.textContent = isDark 
+    const icon = isDark ? '☀️' : '🌙';
+    const text = isDark 
       ? translations[lang].toggleLight 
       : translations[lang].toggleDark;
+    btn.innerHTML = `<span>${icon}</span><span>${text}</span>`;
   }
 }
 
-// Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', function() {
   updateThemeButtonText();
 });
