@@ -15,25 +15,27 @@
   <script src="translations.js"></script>
 </head>
 <body>
-  <!-- Кнопки управления -->
-  <div class="controls">
-    <button class="theme-toggle" onclick="toggleTheme()">🌙 Тёмная</button>
-    <select class="lang-switcher" onchange="setLanguage(this.value)">
-      <option value="ru">🇷🇺 RU</option>
-      <option value="be">🇧🇾 BY</option>
-      <option value="en">🇬🇧 EN</option>
-    </select>
-  </div>
-
   <header class="site-header">
     <div class="header-top">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралескі">
-        <circle cx="50" cy="50" r="45" fill="#6A5DC2"/>
-        <text x="50" y="58" font-family="Unbounded, sans-serif" font-size="20" font-weight="600" fill="white" text-anchor="middle">П</text>
-      </svg>
-      <div class="site-title">
-        <span data-i18n="header.title">Хор «Пралескі»</span>
-        <small data-i18n="header.subtitle">ДМШИ №2 г. Брест</small>
+      <div class="header-top-left">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралескі">
+          <circle cx="50" cy="50" r="45"/>
+          <text x="50" y="58" font-family="Unbounded, sans-serif" font-size="20" font-weight="600" fill="white" text-anchor="middle">П</text>
+        </svg>
+        <div class="site-title">
+          <span data-i18n="header.title">Хор «Пралескі»</span>
+          <small data-i18n="header.subtitle">ДМШИ №2 г. Брест</small>
+        </div>
+      </div>
+      <div class="header-controls">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему">
+          <span>🌙</span><span>Тёмная</span>
+        </button>
+        <select class="lang-select" onchange="setLanguage(this.value)" aria-label="Выбор языка">
+          <option value="ru">🇷🇺 RU</option>
+          <option value="be">🇧🇾 BY</option>
+          <option value="en">🇬🇧 EN</option>
+        </select>
       </div>
     </div>
     <nav class="main-nav" aria-label="Основное меню">
@@ -58,11 +60,11 @@
         <p data-i18n="home.paragraph2"><span class="highlight">Основан в 1991 году.</span> Лауреат городских, областных и республиканских конкурсов. Обладатель звания «образцовый хоровой коллектив».</p>
       </div>
       <svg class="hero-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="48" fill="#6A5DC2" opacity="0.1"/>
-        <path d="M30 65 Q50 30 70 65" stroke="#6A5DC2" stroke-width="3" fill="none"/>
-        <circle cx="35" cy="65" r="4" fill="#6A5DC2"/>
-        <circle cx="50" cy="50" r="4" fill="#6A5DC2"/>
-        <circle cx="65" cy="65" r="4" fill="#6A5DC2"/>
+        <circle cx="50" cy="50" r="48" fill="var(--hero-circle-fill)" opacity="0.1"/>
+        <path d="M30 65 Q50 30 70 65" stroke="var(--hero-circle-fill)" stroke-width="3" fill="none"/>
+        <circle cx="35" cy="65" r="4" fill="var(--hero-circle-fill)"/>
+        <circle cx="50" cy="50" r="4" fill="var(--hero-circle-fill)"/>
+        <circle cx="65" cy="65" r="4" fill="var(--hero-circle-fill)"/>
       </svg>
     </div>
 
