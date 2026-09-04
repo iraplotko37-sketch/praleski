@@ -45,6 +45,12 @@
       --card-border-top-3: #7D73E6;
       --placeholder-color: #6A5DC2;
       --video-note-border: #E6D5B8;
+      --audio-bg: #F9F3E3;
+      --download-btn-bg: #6A5DC2;
+      --download-btn-hover: #5a4fb0;
+      --download-btn-text: #ffffff;
+      --progress-bg: #E6D5B8;
+      --progress-fill: #6A5DC2;
     }
 
     /* Тёмная тема */
@@ -82,6 +88,12 @@
       --card-border-top-3: #7D73E6;
       --placeholder-color: #B09BB0;
       --video-note-border: #5A4A6A;
+      --audio-bg: #4A3A5A;
+      --download-btn-bg: #B09BB0;
+      --download-btn-hover: #c4b0c4;
+      --download-btn-text: #2C1F3A;
+      --progress-bg: #5A4A6A;
+      --progress-fill: #B09BB0;
     }
 
     * {
@@ -153,7 +165,6 @@
       transition: color 0.3s;
     }
 
-    /* Блок переключателей */
     .header-controls {
       display: flex;
       align-items: center;
@@ -203,7 +214,6 @@
       transition: background 0.3s;
     }
 
-    /* Иконки темы – символы вместо смайлов */
     .theme-icon {
       display: inline-block;
       font-size: 0.9rem;
@@ -335,25 +345,112 @@
       transition: fill 0.3s;
     }
 
-    .video-note {
-      background-color: var(--bg-video-note);
-      border-radius: 18px;
-      padding: 1.8rem 2rem;
-      box-shadow: 0 4px 18px var(--shadow);
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: var(--text-secondary);
-      border: 1px dashed var(--video-note-border);
-      transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s, color 0.3s;
+    /* ===== Компактный аудио-блок (как плейсхолдер) ===== */
+    .audio-block {
+      background-color: var(--audio-bg);
+      border-radius: 10px;
+      padding: 0.6rem 0.8rem;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: background-color 0.3s;
+      min-width: 0;
     }
-    .video-note svg {
-      width: 24px;
-      height: 24px;
-      fill: var(--placeholder-color);
-      margin-bottom: 0.5rem;
-      transition: fill 0.3s;
+    .play-btn {
+      background: var(--download-btn-bg);
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--download-btn-text);
+      transition: background-color 0.25s, transform 0.1s;
+      flex-shrink: 0;
+      padding: 0;
+    }
+    .play-btn:hover {
+      background-color: var(--download-btn-hover);
+    }
+    .play-btn:active {
+      transform: scale(0.92);
+    }
+    .play-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+    .play-btn .pause-icon {
+      display: none;
+    }
+    .play-btn.playing .play-icon {
+      display: none;
+    }
+    .play-btn.playing .pause-icon {
+      display: block;
+    }
+    .progress-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      min-width: 0;
+    }
+    .progress-bar {
+      flex: 1;
+      height: 3px;
+      background: var(--progress-bg);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+      min-width: 30px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--progress-fill);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+    .time-label {
+      font-size: 0.6rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      min-width: 42px;
+      text-align: right;
+      transition: color 0.3s;
+    }
+    .round-download-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--download-btn-bg);
+      color: var(--download-btn-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.25s, transform 0.1s;
+      flex-shrink: 0;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: none;
+    }
+    .round-download-btn:hover {
+      background-color: var(--download-btn-hover);
+    }
+    .round-download-btn:active {
+      transform: scale(0.92);
+    }
+    .round-download-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
     }
 
     .site-footer {
@@ -476,13 +573,11 @@
       </div>
 
       <div class="header-controls">
-        <!-- Переключатель языка -->
         <div class="toggle-group" role="group" aria-label="Выбор языка">
           <button class="toggle-btn active" data-lang-btn="ru" aria-label="Русский">Рус</button>
           <span class="toggle-separator"></span>
           <button class="toggle-btn" data-lang-btn="be" aria-label="Беларуская">Бел</button>
         </div>
-        <!-- Переключатель темы -->
         <div class="toggle-group" role="group" aria-label="Переключение темы">
           <button class="toggle-btn active" data-theme-btn="light" aria-label="Светлая тема">
             <span class="theme-icon">☀</span> Свет
@@ -512,6 +607,29 @@
     <p class="page-subtitle" data-lang-key="page-subtitle">Аудиозаписи концертных номеров</p>
 
     <div class="recordings-grid">
+      <!-- 6 — ЗЕМЛЯ (теперь первая) -->
+      <div class="recording-card">
+        <div class="recording-title" data-lang-key="rec-title6">Земля</div>
+        <div class="recording-date">2025</div>
+        <div class="recording-desc" data-lang-key="rec-desc">Концертное исполнение</div>
+        <div class="audio-block" id="audio-block-6">
+          <button class="play-btn" id="play-btn-6" aria-label="Воспроизвести">
+            <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <div class="progress-container">
+            <div class="progress-bar" id="progress-bar-6">
+              <div class="progress-fill" id="progress-fill-6"></div>
+            </div>
+            <span class="time-label" id="time-label-6">0:00 / 0:00</span>
+          </div>
+          <a class="round-download-btn" href="InShot_20260713_180244594.mp3" download aria-label="Скачать">
+            <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v11l3.5-3.5 1.4 1.4-5.9 5.9-5.9-5.9 1.4-1.4L10 13V2z"/></svg>
+          </a>
+          <audio id="audio-6" src="InShot_20260713_180244594.mp3" preload="metadata"></audio>
+        </div>
+      </div>
+
       <!-- 1 -->
       <div class="recording-card">
         <div class="recording-title" data-lang-key="rec-title1">При долине куст калины</div>
@@ -562,16 +680,7 @@
           <span data-lang-key="placeholder-text">Запись появится позже</span>
         </div>
       </div>
-      <!-- 6 -->
-      <div class="recording-card">
-        <div class="recording-title" data-lang-key="rec-title6">Земля</div>
-        <div class="recording-date">2025</div>
-        <div class="recording-desc" data-lang-key="rec-desc">Концертное исполнение</div>
-        <div class="placeholder-block">
-          <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
-          <span data-lang-key="placeholder-text">Запись появится позже</span>
-        </div>
-      </div>
+
       <!-- 7 -->
       <div class="recording-card">
         <div class="recording-title" data-lang-key="rec-title7">Колыбельная пеплу</div>
@@ -593,11 +702,7 @@
         </div>
       </div>
     </div>
-
-    <div class="video-note">
-      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-      <p data-lang-key="video-note-text">Видеозапись появится позже</p>
-    </div>
+    <!-- Блок с видеозаписью удалён -->
   </main>
 
   <footer class="site-footer">
@@ -666,7 +771,8 @@
           'rec-title8': 'Смуглянка',
           'rec-desc': 'Концертное исполнение',
           'placeholder-text': 'Запись появится позже',
-          'video-note-text': 'Видеозапись появится позже',
+          'audio-unsupported': 'Ваш браузер не поддерживает аудио.',
+          'download-btn': 'Скачать',
           'footer-school': 'ГУО «Детская музыкальная школа искусств №2 г. Бреста»',
           'footer-address': 'ул. Московская, 300, 224005 Брест, Беларусь',
           'footer-copyright': '© 2026 Хор «Пралескі». Все права защищены.'
@@ -692,7 +798,8 @@
           'rec-title8': 'Смуглянка',
           'rec-desc': 'Канцэртнае выкананне',
           'placeholder-text': 'Запіс з\'явіцца пазней',
-          'video-note-text': 'Відэазапіс з\'явіцца пазней',
+          'audio-unsupported': 'Ваш браўзер не падтрымлівае аўдыё.',
+          'download-btn': 'Спампаваць',
           'footer-school': 'ДУА «Дзіцячая музычная школа мастацтваў №2 г. Брэста»',
           'footer-address': 'вул. Маскоўская, 300, 224005 Брэст, Беларусь',
           'footer-copyright': '© 2026 Хор «Пралескі». Усе правы абаронены.'
@@ -732,6 +839,77 @@
       } else {
         setLanguage('ru');
       }
+
+      // ---------- КАСТОМНЫЙ АУДИОПЛЕЕР (только для 6-й записи) ----------
+      function setupCustomAudio(cardId) {
+        const playBtn = document.getElementById('play-btn-' + cardId);
+        const audio = document.getElementById('audio-' + cardId);
+        const progressBar = document.getElementById('progress-bar-' + cardId);
+        const progressFill = document.getElementById('progress-fill-' + cardId);
+        const timeLabel = document.getElementById('time-label-' + cardId);
+
+        if (!playBtn || !audio || !progressBar || !progressFill || !timeLabel) return;
+
+        function formatTime(seconds) {
+          if (isNaN(seconds)) return '0:00';
+          const mins = Math.floor(seconds / 60);
+          const secs = Math.floor(seconds % 60);
+          return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        function updateProgress() {
+          const current = audio.currentTime || 0;
+          const duration = audio.duration || 0;
+          const percent = duration > 0 ? (current / duration) * 100 : 0;
+          progressFill.style.width = percent + '%';
+          timeLabel.textContent = formatTime(current) + ' / ' + formatTime(duration);
+        }
+
+        function togglePlay() {
+          if (audio.paused) {
+            audio.play();
+            playBtn.classList.add('playing');
+            playBtn.setAttribute('aria-label', 'Пауза');
+          } else {
+            audio.pause();
+            playBtn.classList.remove('playing');
+            playBtn.setAttribute('aria-label', 'Воспроизвести');
+          }
+        }
+
+        playBtn.addEventListener('click', togglePlay);
+
+        audio.addEventListener('loadedmetadata', function() {
+          updateProgress();
+        });
+        audio.addEventListener('timeupdate', function() {
+          updateProgress();
+        });
+        audio.addEventListener('ended', function() {
+          playBtn.classList.remove('playing');
+          playBtn.setAttribute('aria-label', 'Воспроизвести');
+          progressFill.style.width = '0%';
+          timeLabel.textContent = '0:00 / ' + formatTime(audio.duration);
+        });
+
+        // Клик по прогресс-бару для перемотки
+        progressBar.addEventListener('click', function(e) {
+          const rect = progressBar.getBoundingClientRect();
+          const offsetX = e.clientX - rect.left;
+          const width = rect.width;
+          if (width > 0 && audio.duration) {
+            const newTime = (offsetX / width) * audio.duration;
+            audio.currentTime = newTime;
+            updateProgress();
+          }
+        });
+
+        // Начальное обновление
+        updateProgress();
+      }
+
+      // Инициализация для 6-й карточки
+      setupCustomAudio(6);
     })();
   </script>
 </body>
