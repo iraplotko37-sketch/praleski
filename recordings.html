@@ -4,592 +4,153 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Записи — Хор «Пралескі» ДМШИ №2 Брест</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
-    /* CSS variables для светлой темы (по умолчанию) */
     :root {
-      --bg-body: #FFF8E1;
-      --bg-header: #4B2C66;
-      --bg-footer: #4B2C66;
-      --bg-card: #ffffff;
-      --bg-recording-card: #ffffff;
-      --bg-placeholder: #F9F3E3;
-      --bg-video-note: #ffffff;
-      --text-primary: #4B2C66;
-      --text-secondary: #3A2550;
-      --text-muted: #7A6393;
-      --text-header: #FFF8E1;
-      --text-footer: #FFF8E1;
-      --text-footer-address: #E6D5B8;
-      --border-light: #E6D5B8;
-      --border-card: #F0E6C8;
-      --shadow: rgba(75, 44, 102, 0.07);
-      --shadow-hover: rgba(75, 44, 102, 0.12);
-      --nav-hover-bg: rgba(255, 248, 225, 0.1);
-      --nav-border: rgba(255, 248, 225, 0.15);
-      --divider-line: #E6D5B8;
-      --divider-dot: #6A5DC2;
-      --icon-fill: #6A5DC2;
-      --btn-toggle-bg: rgba(255, 255, 255, 0.15);
-      --btn-toggle-hover: rgba(255, 255, 255, 0.25);
-      --btn-toggle-border: rgba(255, 248, 225, 0.25);
-      --btn-toggle-color: #FFF8E1;
-      --btn-toggle-active-bg: #FFF8E1;
-      --btn-toggle-active-color: #4B2C66;
-      --card-border-top: #6A5DC2;
-      --card-border-top-2: #6E95E8;
-      --card-border-top-3: #7D73E6;
-      --placeholder-color: #6A5DC2;
-      --video-note-border: #E6D5B8;
-      --audio-bg: #F9F3E3;
-      --download-btn-bg: #6A5DC2;
-      --download-btn-hover: #5a4fb0;
-      --download-btn-text: #ffffff;
-      --progress-bg: #E6D5B8;
-      --progress-fill: #6A5DC2;
+      --bg-body:#FFF8E1;--bg-header:#4B2C66;--bg-footer:#4B2C66;--bg-card:#ffffff;--bg-recording-card:#ffffff;--bg-placeholder:#F9F3E3;--audio-bg:#F9F3E3;
+      --text-primary:#4B2C66;--text-secondary:#3A2550;--text-muted:#7A6393;--text-header:#FFF8E1;--text-footer:#FFF8E1;--text-footer-address:#E6D5B8;
+      --border-card:#F0E6C8;--shadow:rgba(75,44,102,0.07);--shadow-hover:rgba(75,44,102,0.12);
+      --nav-hover-bg:rgba(255,248,225,0.1);--nav-border:rgba(255,248,225,0.15);
+      --btn-toggle-bg:rgba(255,255,255,0.15);--btn-toggle-hover:rgba(255,255,255,0.25);--btn-toggle-border:rgba(255,248,225,0.25);
+      --btn-toggle-color:#FFF8E1;--btn-toggle-active-bg:#FFF8E1;--btn-toggle-active-color:#4B2C66;
+      --card-border-top:#6A5DC2;--card-border-top-2:#6E95E8;--card-border-top-3:#7D73E6;--placeholder-color:#6A5DC2;
+      --download-btn-bg:#6A5DC2;--download-btn-hover:#5a4fb0;--download-btn-text:#ffffff;--progress-bg:#E6D5B8;--progress-fill:#6A5DC2;--font-scale:1;
     }
-
-    /* Тёмная тема */
-    body.dark-theme {
-      --bg-body: #2C1F3A;
-      --bg-header: #1F1429;
-      --bg-footer: #1F1429;
-      --bg-card: #3A2A4A;
-      --bg-recording-card: #3A2A4A;
-      --bg-placeholder: #4A3A5A;
-      --bg-video-note: #3A2A4A;
-      --text-primary: #F0E6C8;
-      --text-secondary: #D8CBB5;
-      --text-muted: #B09BB0;
-      --text-header: #FFF8E1;
-      --text-footer: #FFF8E1;
-      --text-footer-address: #B09BB0;
-      --border-light: #5A4A6A;
-      --border-card: #5A4A6A;
-      --shadow: rgba(0, 0, 0, 0.3);
-      --shadow-hover: rgba(0, 0, 0, 0.4);
-      --nav-hover-bg: rgba(255, 248, 225, 0.08);
-      --nav-border: rgba(255, 248, 225, 0.1);
-      --divider-line: #5A4A6A;
-      --divider-dot: #B09BB0;
-      --icon-fill: #B09BB0;
-      --btn-toggle-bg: rgba(255, 248, 225, 0.10);
-      --btn-toggle-hover: rgba(255, 248, 225, 0.20);
-      --btn-toggle-border: rgba(255, 248, 225, 0.15);
-      --btn-toggle-color: #F0E6C8;
-      --btn-toggle-active-bg: #F0E6C8;
-      --btn-toggle-active-color: #2C1F3A;
-      --card-border-top: #B09BB0;
-      --card-border-top-2: #6E95E8;
-      --card-border-top-3: #7D73E6;
-      --placeholder-color: #B09BB0;
-      --video-note-border: #5A4A6A;
-      --audio-bg: #4A3A5A;
-      --download-btn-bg: #B09BB0;
-      --download-btn-hover: #c4b0c4;
-      --download-btn-text: #2C1F3A;
-      --progress-bg: #5A4A6A;
-      --progress-fill: #B09BB0;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      background-color: var(--bg-body);
-      font-family: 'Unbounded', sans-serif;
-      color: var(--text-primary);
-      line-height: 1.7;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    ul {
-      list-style: none;
-    }
-
-    /* ===== Header ===== */
-    .site-header {
-      background-color: var(--bg-header);
-      padding: 1.2rem 3rem 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s;
-    }
-    .header-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.9rem;
-    }
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-    }
-    .logo-icon {
-      width: 50px;
-      height: 50px;
-      display: block;
-      flex-shrink: 0;
-    }
-    .site-title {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--text-header);
-      letter-spacing: 0.02em;
-      line-height: 1.3;
-      transition: color 0.3s;
-    }
-    .site-title small {
-      display: block;
-      font-size: 0.68rem;
-      font-weight: 300;
-      color: var(--text-footer-address);
-      letter-spacing: 0.08em;
-      margin-top: 4px;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-
-    .header-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      flex-shrink: 0;
-    }
-    .toggle-group {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      background: var(--btn-toggle-bg);
-      border-radius: 30px;
-      padding: 0.2rem 0.3rem;
-      border: 1px solid var(--btn-toggle-border);
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .toggle-btn {
-      background: transparent;
-      border: none;
-      padding: 0.3rem 0.8rem;
-      border-radius: 30px;
-      font-family: 'Unbounded', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 500;
-      color: var(--btn-toggle-color);
-      cursor: pointer;
-      transition: background 0.25s, color 0.25s, transform 0.1s;
-      letter-spacing: 0.03em;
-      white-space: nowrap;
-      line-height: 1.4;
-    }
-    .toggle-btn:hover {
-      background: var(--btn-toggle-hover);
-    }
-    .toggle-btn.active {
-      background: var(--btn-toggle-active-bg);
-      color: var(--btn-toggle-active-color);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
-    .toggle-btn:active {
-      transform: scale(0.94);
-    }
-    .toggle-separator {
-      width: 1px;
-      height: 20px;
-      background: var(--btn-toggle-border);
-      transition: background 0.3s;
-    }
-
-    .theme-icon {
-      display: inline-block;
-      font-size: 0.9rem;
-      line-height: 1;
-      margin-right: 0.2rem;
-    }
-
-    /* ===== Навигация ===== */
-    .main-nav {
-      width: 100%;
-    }
-    .nav-list {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 0.5rem;
-    }
-    .nav-list a {
-      display: block;
-      text-align: center;
-      padding: 0.65rem 0.5rem;
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--text-footer);
-      border-radius: 12px;
-      border: 1px solid var(--nav-border);
-      transition: color 0.2s, background-color 0.2s, border-color 0.2s, background-color 0.3s;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
-    }
-    .nav-list a:hover {
-      color: var(--text-header);
-      background-color: var(--nav-hover-bg);
-      border-color: rgba(255, 248, 225, 0.3);
-    }
-    .nav-list a.active-page {
-      color: var(--btn-toggle-active-color);
-      font-weight: 600;
-      background-color: var(--btn-toggle-active-bg);
-      border-color: var(--btn-toggle-active-bg);
-    }
-
-    /* ===== Main ===== */
-    .main-content {
-      flex: 1;
-      padding: 3rem 3rem 4rem;
-      max-width: 920px;
-      margin: 0 auto;
-      width: 100%;
-    }
-    .page-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-      transition: color 0.3s;
-    }
-    .page-subtitle {
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      margin-bottom: 2.2rem;
-      transition: color 0.3s;
-    }
-
-    .recordings-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.2rem;
-    }
-    .recording-card {
-      background-color: var(--bg-recording-card);
-      border-radius: 18px;
-      padding: 1.8rem;
-      box-shadow: 0 4px 18px var(--shadow);
-      border-top: 4px solid var(--card-border-top);
-      display: flex;
-      flex-direction: column;
-      transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
-    }
-    .recording-card:nth-child(2n) {
-      border-top-color: var(--card-border-top-2);
-    }
-    .recording-card:nth-child(3n) {
-      border-top-color: var(--card-border-top-3);
-    }
-    .recording-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.3rem;
-      transition: color 0.3s;
-    }
-    .recording-date {
-      font-size: 0.65rem;
-      font-weight: 500;
-      color: var(--placeholder-color);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.8rem;
-      transition: color 0.3s;
-    }
-    .recording-desc {
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      flex: 1;
-      margin-bottom: 1rem;
-      transition: color 0.3s;
-    }
-    .placeholder-block {
-      background-color: var(--bg-placeholder);
-      border-radius: 10px;
-      padding: 0.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      font-size: 0.72rem;
-      font-weight: 400;
-      color: var(--placeholder-color);
-      margin-top: auto;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .placeholder-block svg {
-      width: 18px;
-      height: 18px;
-      fill: var(--placeholder-color);
-      transition: fill 0.3s;
-    }
-
-    /* ===== Компактный аудио-блок (как плейсхолдер) ===== */
-    .audio-block {
-      background-color: var(--audio-bg);
-      border-radius: 10px;
-      padding: 0.6rem 0.8rem;
-      margin-top: auto;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      transition: background-color 0.3s;
-      min-width: 0;
-    }
-    .play-btn {
-      background: var(--download-btn-bg);
-      border: none;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--download-btn-text);
-      transition: background-color 0.25s, transform 0.1s;
-      flex-shrink: 0;
-      padding: 0;
-    }
-    .play-btn:hover {
-      background-color: var(--download-btn-hover);
-    }
-    .play-btn:active {
-      transform: scale(0.92);
-    }
-    .play-btn svg {
-      width: 14px;
-      height: 14px;
-      fill: currentColor;
-    }
-    .play-btn .pause-icon {
-      display: none;
-    }
-    .play-btn.playing .play-icon {
-      display: none;
-    }
-    .play-btn.playing .pause-icon {
-      display: block;
-    }
-    .progress-container {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      min-width: 0;
-    }
-    .progress-bar {
-      flex: 1;
-      height: 3px;
-      background: var(--progress-bg);
-      border-radius: 2px;
-      cursor: pointer;
-      position: relative;
-      min-width: 30px;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--progress-fill);
-      border-radius: 2px;
-      width: 0%;
-      transition: width 0.1s linear;
-    }
-    .time-label {
-      font-size: 0.6rem;
-      font-weight: 400;
-      color: var(--text-muted);
-      letter-spacing: 0.02em;
-      white-space: nowrap;
-      min-width: 42px;
-      text-align: right;
-      transition: color 0.3s;
-    }
-    .round-download-btn {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--download-btn-bg);
-      color: var(--download-btn-text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.25s, transform 0.1s;
-      flex-shrink: 0;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      text-decoration: none;
-    }
-    .round-download-btn:hover {
-      background-color: var(--download-btn-hover);
-    }
-    .round-download-btn:active {
-      transform: scale(0.92);
-    }
-    .round-download-btn svg {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
-    }
-
-    .site-footer {
-      background-color: var(--bg-footer);
-      color: var(--text-footer);
-      text-align: center;
-      padding: 1.8rem 1.5rem;
-      font-size: 0.78rem;
-      font-weight: 300;
-      letter-spacing: 0.03em;
-      margin-top: auto;
-      line-height: 1.9;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .site-footer .footer-address {
-      color: var(--text-footer-address);
-      transition: color 0.3s;
-    }
-
-    @media (max-width: 900px) {
-      .site-header {
-        padding: 1.2rem 1.4rem;
-      }
-      .header-top {
-        flex-wrap: wrap;
-        gap: 0.6rem;
-      }
-      .header-left {
-        flex: 1 1 auto;
-      }
-      .header-controls {
-        flex: 0 1 auto;
-        margin-left: auto;
-        gap: 0.5rem;
-      }
-      .toggle-btn {
-        font-size: 0.6rem;
-        padding: 0.2rem 0.6rem;
-      }
-      .toggle-group {
-        padding: 0.15rem 0.25rem;
-      }
-      .site-title {
-        font-size: 1.1rem;
-      }
-      .site-title small {
-        font-size: 0.6rem;
-      }
-      .nav-list {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .nav-list a {
-        padding: 0.55rem 0.4rem;
-        font-size: 0.72rem;
-      }
-      .main-content {
-        padding: 2rem 1.4rem 2.5rem;
-      }
-      .page-title {
-        font-size: 1.7rem;
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg-body:#2C1F3A;--bg-header:#1F1429;--bg-footer:#1F1429;--bg-card:#3A2A4A;--bg-recording-card:#3A2A4A;--bg-placeholder:#4A3A5A;--audio-bg:#4A3A5A;
+        --text-primary:#F0E6C8;--text-secondary:#D8CBB5;--text-muted:#B09BB0;--text-header:#FFF8E1;--text-footer:#FFF8E1;--text-footer-address:#B09BB0;
+        --border-card:#5A4A6A;--shadow:rgba(0,0,0,0.3);--shadow-hover:rgba(0,0,0,0.4);
+        --nav-hover-bg:rgba(255,248,225,0.08);--nav-border:rgba(255,248,225,0.1);
+        --btn-toggle-bg:rgba(255,248,225,0.10);--btn-toggle-hover:rgba(255,248,225,0.20);--btn-toggle-border:rgba(255,248,225,0.15);
+        --btn-toggle-color:#F0E6C8;--btn-toggle-active-bg:#F0E6C8;--btn-toggle-active-color:#2C1F3A;
+        --card-border-top:#B09BB0;--placeholder-color:#B09BB0;
+        --download-btn-bg:#B09BB0;--download-btn-hover:#c4b0c4;--download-btn-text:#2C1F3A;--progress-bg:#5A4A6A;--progress-fill:#B09BB0;
       }
     }
-    @media (max-width: 480px) {
-      .header-controls {
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        width: 100%;
-      }
-      .toggle-group {
-        flex: 1 1 auto;
-        justify-content: center;
-      }
+    [data-theme="dark"] {
+      --bg-body:#2C1F3A;--bg-header:#1F1429;--bg-footer:#1F1429;--bg-card:#3A2A4A;--bg-recording-card:#3A2A4A;--bg-placeholder:#4A3A5A;--audio-bg:#4A3A5A;
+      --text-primary:#F0E6C8;--text-secondary:#D8CBB5;--text-muted:#B09BB0;--text-header:#FFF8E1;--text-footer:#FFF8E1;--text-footer-address:#B09BB0;
+      --border-card:#5A4A6A;--shadow:rgba(0,0,0,0.3);--shadow-hover:rgba(0,0,0,0.4);
+      --nav-hover-bg:rgba(255,248,225,0.08);--nav-border:rgba(255,248,225,0.1);
+      --btn-toggle-bg:rgba(255,248,225,0.10);--btn-toggle-hover:rgba(255,248,225,0.20);--btn-toggle-border:rgba(255,248,225,0.15);
+      --btn-toggle-color:#F0E6C8;--btn-toggle-active-bg:#F0E6C8;--btn-toggle-active-color:#2C1F3A;
+      --card-border-top:#B09BB0;--placeholder-color:#B09BB0;
+      --download-btn-bg:#B09BB0;--download-btn-hover:#c4b0c4;--download-btn-text:#2C1F3A;--progress-bg:#5A4A6A;--progress-fill:#B09BB0;
+    }
+    [data-theme="light"] {
+      --bg-body:#FFF8E1;--bg-header:#4B2C66;--bg-footer:#4B2C66;--bg-card:#ffffff;--bg-recording-card:#ffffff;--bg-placeholder:#F9F3E3;--audio-bg:#F9F3E3;
+      --text-primary:#4B2C66;--text-secondary:#3A2550;--text-muted:#7A6393;--text-header:#FFF8E1;--text-footer:#FFF8E1;--text-footer-address:#E6D5B8;
+      --border-card:#F0E6C8;--shadow:rgba(75,44,102,0.07);--shadow-hover:rgba(75,44,102,0.12);
+      --nav-hover-bg:rgba(255,248,225,0.1);--nav-border:rgba(255,248,225,0.15);
+      --btn-toggle-bg:rgba(255,255,255,0.15);--btn-toggle-hover:rgba(255,255,255,0.25);--btn-toggle-border:rgba(255,248,225,0.25);
+      --btn-toggle-color:#FFF8E1;--btn-toggle-active-bg:#FFF8E1;--btn-toggle-active-color:#4B2C66;
+      --card-border-top:#6A5DC2;--placeholder-color:#6A5DC2;
+      --download-btn-bg:#6A5DC2;--download-btn-hover:#5a4fb0;--download-btn-text:#ffffff;--progress-bg:#E6D5B8;--progress-fill:#6A5DC2;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{font-size:calc(16px * var(--font-scale))}
+    body{background:var(--bg-body);font-family:'Unbounded',sans-serif;color:var(--text-primary);line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
+    a{text-decoration:none;color:inherit}ul{list-style:none}
+    button{-webkit-tap-highlight-color:transparent;outline:none;border:none;background:none;cursor:pointer;font-family:inherit}
+    .site-header{background:var(--bg-header);padding:1.2rem 3rem;display:flex;flex-direction:column;gap:1.2rem;box-shadow:0 3px 12px rgba(0,0,0,.2)}
+    .header-top{display:flex;align-items:center;justify-content:space-between;gap:.9rem}
+    .header-left{display:flex;align-items:center;gap:.9rem}
+    .logo-icon{width:50px;height:50px;flex-shrink:0}
+    .site-title{font-size:1.4rem;font-weight:600;color:var(--text-header);letter-spacing:.02em;line-height:1.3}
+    .site-title small{display:block;font-size:.68rem;font-weight:300;color:var(--text-footer-address);letter-spacing:.08em;margin-top:4px;text-transform:uppercase}
+    .header-controls{display:flex;align-items:center;gap:.7rem;flex-shrink:0;position:relative}
+    .toggle-group{display:flex;align-items:center;gap:.3rem;background:var(--btn-toggle-bg);border-radius:30px;padding:.2rem .3rem;border:1px solid var(--btn-toggle-border)}
+    .toggle-btn{padding:.3rem .8rem;border-radius:30px;font-size:.65rem;font-weight:500;color:var(--btn-toggle-color);white-space:nowrap}
+    .toggle-btn:hover{background:var(--btn-toggle-hover)}
+    .toggle-btn.active{background:var(--btn-toggle-active-bg);color:var(--btn-toggle-active-color);box-shadow:0 2px 6px rgba(0,0,0,.15)}
+    .toggle-separator{width:1px;height:20px;background:var(--btn-toggle-border)}
+    .settings-btn{width:38px;height:38px;border-radius:50%;background:var(--btn-toggle-bg);border:1px solid var(--btn-toggle-border);display:flex;align-items:center;justify-content:center;color:var(--btn-toggle-color)}
+    .settings-btn:hover{background:var(--btn-toggle-hover)}
+    .settings-btn svg{width:20px;height:20px;fill:currentColor}
+    .settings-panel{position:absolute;top:100%;right:0;margin-top:8px;background:var(--bg-card);border:1px solid var(--border-card);border-radius:14px;padding:1rem;box-shadow:0 8px 24px var(--shadow-hover);min-width:220px;z-index:100;display:none;color:var(--text-primary)}
+    .settings-panel.open{display:block}
+    .settings-panel h4{font-size:.75rem;font-weight:600;margin-bottom:.6rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
+    .settings-row{display:flex;gap:.4rem;margin-bottom:1rem;flex-wrap:wrap}
+    .settings-option{flex:1;min-width:60px;padding:.45rem .5rem;border-radius:10px;font-size:.68rem;font-weight:500;text-align:center;background:var(--bg-body);border:1px solid var(--border-card);color:var(--text-primary)}
+    .settings-option.active{background:var(--btn-toggle-active-bg);color:var(--btn-toggle-active-color);border-color:transparent}
+    .settings-option:hover:not(.active){background:var(--nav-hover-bg)}
+    .main-nav{width:100%}
+    .nav-list{display:grid;grid-template-columns:repeat(6,1fr);gap:.5rem}
+    .nav-list a{display:block;text-align:center;padding:.65rem .5rem;font-size:.78rem;font-weight:500;color:var(--text-footer);border-radius:12px;border:1px solid var(--nav-border)}
+    .nav-list a:hover{background:var(--nav-hover-bg);border-color:rgba(255,248,225,.3)}
+    .nav-list a.active-page{color:var(--btn-toggle-active-color);font-weight:600;background:var(--btn-toggle-active-bg);border-color:var(--btn-toggle-active-bg)}
+    .main-content{flex:1;padding:3rem 3rem 4rem;max-width:920px;margin:0 auto;width:100%}
+    .page-title{font-size:2rem;font-weight:700;color:var(--text-primary);margin-bottom:.5rem}
+    .page-subtitle{font-size:.9rem;font-weight:300;color:var(--text-muted);margin-bottom:2.2rem}
+    .recordings-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem}
+    .recording-card{background:var(--bg-recording-card);border-radius:18px;padding:1.8rem;box-shadow:0 4px 18px var(--shadow);border-top:4px solid var(--card-border-top);display:flex;flex-direction:column}
+    .recording-card:nth-child(2n){border-top-color:var(--card-border-top-2)}
+    .recording-card:nth-child(3n){border-top-color:var(--card-border-top-3)}
+    .recording-title{font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:.3rem}
+    .recording-date{font-size:.65rem;font-weight:500;color:var(--placeholder-color);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.8rem}
+    .recording-desc{font-size:.85rem;font-weight:300;color:var(--text-secondary);line-height:1.7;flex:1;margin-bottom:1rem}
+    .placeholder-block{background:var(--bg-placeholder);border-radius:10px;padding:.8rem;display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.72rem;font-weight:400;color:var(--placeholder-color);margin-top:auto}
+    .placeholder-block svg{width:18px;height:18px;fill:var(--placeholder-color)}
+    .audio-block{background:var(--audio-bg);border-radius:10px;padding:.6rem .8rem;margin-top:auto;display:flex;align-items:center;gap:.6rem;min-width:0}
+    .play-btn{background:var(--download-btn-bg);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:var(--download-btn-text);flex-shrink:0;padding:0}
+    .play-btn:hover{background:var(--download-btn-hover)}
+    .play-btn svg{width:14px;height:14px;fill:currentColor}
+    .play-btn .pause-icon{display:none}
+    .play-btn.playing .play-icon{display:none}
+    .play-btn.playing .pause-icon{display:block}
+    .progress-container{flex:1;display:flex;align-items:center;gap:.4rem;min-width:0}
+    .progress-bar{flex:1;height:3px;background:var(--progress-bg);border-radius:2px;cursor:pointer;position:relative;min-width:30px}
+    .progress-fill{height:100%;background:var(--progress-fill);border-radius:2px;width:0%}
+    .time-label{font-size:.6rem;font-weight:400;color:var(--text-muted);white-space:nowrap;min-width:42px;text-align:right}
+    .round-download-btn{width:30px;height:30px;border-radius:50%;background:var(--download-btn-bg);color:var(--download-btn-text);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .round-download-btn:hover{background:var(--download-btn-hover)}
+    .round-download-btn svg{width:16px;height:16px;fill:currentColor}
+    .site-footer{background:var(--bg-footer);color:var(--text-footer);text-align:center;padding:1.8rem 1.5rem;font-size:.78rem;font-weight:300;letter-spacing:.03em;margin-top:auto;line-height:1.9}
+    .site-footer .footer-address{color:var(--text-footer-address)}
+    @media(max-width:900px){
+      .site-header{padding:1.2rem 1.4rem}.header-top{flex-wrap:wrap;gap:.6rem}.header-left{flex:1 1 auto}.header-controls{margin-left:auto}
+      .site-title{font-size:1.1rem}.site-title small{font-size:.6rem}.nav-list{grid-template-columns:repeat(3,1fr)}
+      .nav-list a{padding:.55rem .4rem;font-size:.72rem}.main-content{padding:2rem 1.4rem 2.5rem}.page-title{font-size:1.7rem}
     }
   </style>
 </head>
 <body>
-
   <header class="site-header">
     <div class="header-top">
       <div class="header-left">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Логотип хора Пралескі">
-          <g transform="translate(28, 32) scale(0.65) rotate(15)">
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(51)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(102)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(154)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(206)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(257)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(308)" />
-            <circle cx="0" cy="0" r="8" fill="#4B2C66" />
-            <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
-          </g>
-          <g transform="translate(72, 38) scale(0.78) rotate(-20)">
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(51)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(102)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(154)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(206)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(257)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(308)" />
-            <circle cx="0" cy="0" r="8" fill="#4B2C66" />
-            <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
-          </g>
-          <g transform="translate(48, 66) scale(0.92) rotate(5)">
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(51)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(102)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(154)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(206)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(257)" />
-            <ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(308)" />
-            <circle cx="0" cy="0" r="8" fill="#4B2C66" />
-            <circle cx="0" cy="0" r="5.5" fill="#F0E6C8" />
-          </g>
+          <g transform="translate(28,32) scale(0.65) rotate(15)"><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(51)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(102)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(154)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(206)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(257)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6E95E8" transform="rotate(308)"/><circle cx="0" cy="0" r="8" fill="#4B2C66"/><circle cx="0" cy="0" r="5.5" fill="#F0E6C8"/></g>
+          <g transform="translate(72,38) scale(0.78) rotate(-20)"><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(51)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(102)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(154)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(206)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(257)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#7D73E6" transform="rotate(308)"/><circle cx="0" cy="0" r="8" fill="#4B2C66"/><circle cx="0" cy="0" r="5.5" fill="#F0E6C8"/></g>
+          <g transform="translate(48,66) scale(0.92) rotate(5)"><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(51)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(102)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(154)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(206)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(257)"/><ellipse cx="0" cy="-18" rx="8" ry="16" fill="#6A5DC2" transform="rotate(308)"/><circle cx="0" cy="0" r="8" fill="#4B2C66"/><circle cx="0" cy="0" r="5.5" fill="#F0E6C8"/></g>
         </svg>
-        <div class="site-title">
-          <span data-lang-key="site-title">Хор «Пралескі»</span>
-          <small data-lang-key="site-subtitle">ДМШИ №2 г. Брест</small>
-        </div>
+        <div class="site-title"><span data-lang-key="site-title">Хор «Пралескі»</span><small data-lang-key="site-subtitle">ДМШИ №2 г. Брест</small></div>
       </div>
-
       <div class="header-controls">
         <div class="toggle-group" role="group" aria-label="Выбор языка">
-          <button class="toggle-btn active" data-lang-btn="ru" aria-label="Русский">Рус</button>
-          <span class="toggle-separator"></span>
-          <button class="toggle-btn" data-lang-btn="be" aria-label="Беларуская">Бел</button>
+          <button class="toggle-btn active" data-lang-btn="ru">Рус</button><span class="toggle-separator"></span><button class="toggle-btn" data-lang-btn="be">Бел</button>
         </div>
-        <div class="toggle-group" role="group" aria-label="Переключение темы">
-          <button class="toggle-btn active" data-theme-btn="light" aria-label="Светлая тема">
-            <span class="theme-icon">☀</span> Свет
-          </button>
-          <span class="toggle-separator"></span>
-          <button class="toggle-btn" data-theme-btn="dark" aria-label="Тёмная тема">
-            <span class="theme-icon">☽</span> Тём
-          </button>
+        <button class="settings-btn" id="settingsBtn" aria-label="Настройки" title="Настройки">
+          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.74 8.87a.49.49 0 0 0 .12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 0 0-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg>
+        </button>
+        <div class="settings-panel" id="settingsPanel">
+          <h4>Тема</h4>
+          <div class="settings-row">
+            <button class="settings-option" data-theme="system">Системная</button>
+            <button class="settings-option" data-theme="light"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" fill="none"/></svg>Свет</button>
+            <button class="settings-option" data-theme="dark"><svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:3px"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>Тём</button>
+          </div>
+          <h4>Размер шрифта</h4>
+          <div class="settings-row">
+            <button class="settings-option" data-font="0.9">Мелкий</button>
+            <button class="settings-option" data-font="1">Обычный</button>
+            <button class="settings-option" data-font="1.15">Крупный</button>
+          </div>
         </div>
       </div>
     </div>
-
     <nav class="main-nav" aria-label="Основное меню">
       <ul class="nav-list">
         <li><a href="index.html" data-lang-key="nav-home">Главная</a></li>
@@ -601,13 +162,10 @@
       </ul>
     </nav>
   </header>
-
   <main class="main-content">
     <h1 class="page-title" data-lang-key="page-title">Записи</h1>
     <p class="page-subtitle" data-lang-key="page-subtitle">Аудиозаписи концертных номеров</p>
-
     <div class="recordings-grid">
-      <!-- 6 — ЗЕМЛЯ (теперь первая) -->
       <div class="recording-card">
         <div class="recording-title" data-lang-key="rec-title6">Земля</div>
         <div class="recording-date">2025</div>
@@ -618,9 +176,7 @@
             <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
           </button>
           <div class="progress-container">
-            <div class="progress-bar" id="progress-bar-6">
-              <div class="progress-fill" id="progress-fill-6"></div>
-            </div>
+            <div class="progress-bar" id="progress-bar-6"><div class="progress-fill" id="progress-fill-6"></div></div>
             <span class="time-label" id="time-label-6">0:00 / 0:00</span>
           </div>
           <a class="round-download-btn" href="InShot_20260713_180244594.mp3" download aria-label="Скачать">
@@ -629,287 +185,82 @@
           <audio id="audio-6" src="InShot_20260713_180244594.mp3" preload="metadata"></audio>
         </div>
       </div>
-
-      <!-- 1 -->
       <div class="recording-card">
         <div class="recording-title" data-lang-key="rec-title1">При долине куст калины</div>
         <div class="recording-date">2025</div>
         <div class="recording-desc" data-lang-key="rec-desc">Концертное исполнение</div>
-        <div class="placeholder-block">
-          <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
-          <span data-lang-key="placeholder-text">Запись появится позже</span>
-        </div>
+        <div class="placeholder-block"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg><span data-lang-key="placeholder-text">Запись появится позже</span></div>
       </div>
-      <!-- 2 -->
       <div class="recording-card">
         <div class="recording-title" data-lang-key="rec-title2">Пойдуль я выйлуль я</div>
         <div class="recording-date">2025</div>
         <div class="recording-desc" data-lang-key="rec-desc">Концертное исполнение</div>
-        <div class="placeholder-block">
-          <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
-          <span data-lang-key="placeholder-text">Запись появится позже</span>
-        </div>
+        <div class="placeholder-block"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg><span data-lang-key="placeholder-text">Запись появится позже</span></div>
       </div>
-      <!-- 3 -->
       <div class="recording-card">
         <div class="recording-title" data-lang-key="rec-title3">Паехау сидар да млына</div>
         <div class="recording-date">2025</div>
         <div class="recording-desc" data-lang-key="rec-desc">Концертное исполнение</div>
-        <div class="placeholder-block">
-          <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
-          <span data-lang-key="placeholder-text">Запись появится позже</span>
-        </div>
+        <div class="placeholder-block"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg><span data-lang-key="placeholder-text">Запись появится позже</span></div>
       </div>
-      <!-- 4 -->
       <div class="recording-card">
         <div class="recording-title" data-lang-key="rec-title4">Развитальнпя</div>
         <div class="recording-date">2025</div>
         <div class="recording-desc" data-lang-key="rec-desc">Концертное исполнение</div>
-        <div class="placeholder-block">
-          <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
-          <span data-lang-key="placeholder-text">Запись появится позже</span>
-        </div>
+        <div class="placeholder-block"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg><span data-lang-key="placeholder-text">Запись появится позже</span></div>
       </div>
-      <!-- 5 -->
       <div class="recording-card">
         <div class="recording-title" data-lang-key="rec-title5">Песня мира</div>
         <div class="recording-date">2025</div>
         <div class="recording-desc" data-lang-key="rec-desc">Концертное исполнение</div>
-        <div class="placeholder-block">
-          <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
-          <span data-lang-key="placeholder-text">Запись появится позже</span>
-        </div>
+        <div class="placeholder-block"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg><span data-lang-key="placeholder-text">Запись появится позже</span></div>
       </div>
-
-      <!-- 7 -->
       <div class="recording-card">
         <div class="recording-title" data-lang-key="rec-title7">Колыбельная пеплу</div>
         <div class="recording-date">2025</div>
         <div class="recording-desc" data-lang-key="rec-desc">Концертное исполнение</div>
-        <div class="placeholder-block">
-          <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
-          <span data-lang-key="placeholder-text">Запись появится позже</span>
-        </div>
+        <div class="placeholder-block"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg><span data-lang-key="placeholder-text">Запись появится позже</span></div>
       </div>
-      <!-- 8 -->
       <div class="recording-card">
         <div class="recording-title" data-lang-key="rec-title8">Смуглянка</div>
         <div class="recording-date">2025</div>
         <div class="recording-desc" data-lang-key="rec-desc">Концертное исполнение</div>
-        <div class="placeholder-block">
-          <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
-          <span data-lang-key="placeholder-text">Запись появится позже</span>
-        </div>
+        <div class="placeholder-block"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg><span data-lang-key="placeholder-text">Запись появится позже</span></div>
       </div>
     </div>
-    <!-- Блок с видеозаписью удалён -->
   </main>
-
   <footer class="site-footer">
     <p data-lang-key="footer-school">ГУО «Детская музыкальная школа искусств №2 г. Бреста»</p>
     <p class="footer-address" data-lang-key="footer-address">ул. Московская, 300, 224005 Брест, Беларусь</p>
     <p data-lang-key="footer-copyright">&copy; 2026 Хор «Пралескі». Все права защищены.</p>
   </footer>
-
   <script>
-    (function() {
-      // ---------- ПЕРЕКЛЮЧЕНИЕ ТЕМЫ ----------
-      const themeBtns = document.querySelectorAll('[data-theme-btn]');
-      const body = document.body;
+    (function(){
+      const root=document.documentElement,settingsBtn=document.getElementById('settingsBtn'),settingsPanel=document.getElementById('settingsPanel');
+      function applyTheme(t){if(t==='system')root.removeAttribute('data-theme');else root.setAttribute('data-theme',t);localStorage.setItem('pra-theme',t);document.querySelectorAll('[data-theme]').forEach(b=>b.classList.toggle('active',b.getAttribute('data-theme')===t));}
+      function applyFont(s){root.style.setProperty('--font-scale',s);localStorage.setItem('pra-font',s);document.querySelectorAll('[data-font]').forEach(b=>b.classList.toggle('active',b.getAttribute('data-font')===s));}
+      applyTheme(localStorage.getItem('pra-theme')||'system');applyFont(localStorage.getItem('pra-font')||'1');
+      settingsBtn.addEventListener('click',e=>{e.stopPropagation();settingsPanel.classList.toggle('open');});
+      document.addEventListener('click',()=>settingsPanel.classList.remove('open'));settingsPanel.addEventListener('click',e=>e.stopPropagation());
+      document.querySelectorAll('[data-theme]').forEach(b=>b.addEventListener('click',()=>applyTheme(b.getAttribute('data-theme'))));
+      document.querySelectorAll('[data-font]').forEach(b=>b.addEventListener('click',()=>applyFont(b.getAttribute('data-font'))));
+      const langBtns=document.querySelectorAll('[data-lang-btn]');
+      const translations={ru:{'site-title':'Хор «Пралескі»','site-subtitle':'ДМШИ №2 г. Брест','nav-home':'Главная','nav-news':'Новости','nav-history':'История','nav-achievements':'Достижения','nav-recordings':'Записи','nav-contacts':'Контакты','page-title':'Записи','page-subtitle':'Аудиозаписи концертных номеров','rec-title1':'При долине куст калины','rec-title2':'Пойдуль я выйлуль я','rec-title3':'Паехау сидар да млына','rec-title4':'Развитальнпя','rec-title5':'Песня мира','rec-title6':'Земля','rec-title7':'Колыбельная пеплу','rec-title8':'Смуглянка','rec-desc':'Концертное исполнение','placeholder-text':'Запись появится позже','footer-school':'ГУО «Детская музыкальная школа искусств №2 г. Бреста»','footer-address':'ул. Московская, 300, 224005 Брест, Беларусь','footer-copyright':'© 2026 Хор «Пралескі». Все права защищены.'},be:{'site-title':'Хор «Пралескі»','site-subtitle':'ДМШІ №2 г. Брэст','nav-home':'Галоўная','nav-news':'Навіны','nav-history':'Гісторыя','nav-achievements':'Дасягненні','nav-recordings':'Запісы','nav-contacts':'Кантакты','page-title':'Запісы','page-subtitle':'Аўдыёзапісы канцэртных нумароў','rec-title1':'Пры даліне куст каліны','rec-title2':'Пойдуль я выйлуль я','rec-title3':'Паехаў сідар да млына','rec-title4':'Развітальная','rec-title5':'Песня міру','rec-title6':'Зямля','rec-title7':'Калыханка попелу','rec-title8':'Смуглянка','rec-desc':'Канцэртнае выкананне','placeholder-text':'Запіс з’явіцца пазней','footer-school':'ДУА «Дзіцячая музычная школа мастацтваў №2 г. Брэста»','footer-address':'вул. Маскоўская, 300, 224005 Брэст, Беларусь','footer-copyright':'© 2026 Хор «Пралескі». Усе правы абаронены.'}};
+      function setLanguage(l){document.querySelectorAll('[data-lang-key]').forEach(el=>{const k=el.getAttribute('data-lang-key');if(translations[l]&&translations[l][k]!==undefined)el.innerHTML=translations[l][k];});langBtns.forEach(b=>b.classList.toggle('active',b.getAttribute('data-lang-btn')===l));localStorage.setItem('pra-leski-lang',l);}
+      langBtns.forEach(b=>b.addEventListener('click',()=>setLanguage(b.getAttribute('data-lang-btn'))));setLanguage(localStorage.getItem('pra-leski-lang')||'ru');
 
-      function setTheme(theme) {
-        if (theme === 'dark') {
-          body.classList.add('dark-theme');
-        } else {
-          body.classList.remove('dark-theme');
-        }
-        themeBtns.forEach(btn => {
-          const val = btn.getAttribute('data-theme-btn');
-          if (val === theme) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
-        localStorage.setItem('pra-leski-theme', theme);
+      // Аудиоплеер для "Земля"
+      const audio=document.getElementById('audio-6');
+      const playBtn=document.getElementById('play-btn-6');
+      const progressBar=document.getElementById('progress-bar-6');
+      const progressFill=document.getElementById('progress-fill-6');
+      const timeLabel=document.getElementById('time-label-6');
+      if(audio&&playBtn){
+        playBtn.addEventListener('click',()=>{if(audio.paused){audio.play();playBtn.classList.add('playing');}else{audio.pause();playBtn.classList.remove('playing');}});
+        audio.addEventListener('timeupdate',()=>{const p=(audio.currentTime/audio.duration)*100||0;progressFill.style.width=p+'%';const fmt=s=>Math.floor(s/60)+':'+('0'+Math.floor(s%60)).slice(-2);timeLabel.textContent=fmt(audio.currentTime)+' / '+(isNaN(audio.duration)?'0:00':fmt(audio.duration));});
+        progressBar.addEventListener('click',e=>{const r=progressBar.getBoundingClientRect();audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration;});
+        audio.addEventListener('ended',()=>playBtn.classList.remove('playing'));
       }
-
-      themeBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const theme = this.getAttribute('data-theme-btn');
-          setTheme(theme);
-        });
-      });
-
-      const savedTheme = localStorage.getItem('pra-leski-theme');
-      if (savedTheme) {
-        setTheme(savedTheme);
-      }
-
-      // ---------- ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА ----------
-      const langBtns = document.querySelectorAll('[data-lang-btn]');
-      const translations = {
-        ru: {
-          'site-title': 'Хор «Пралескі»',
-          'site-subtitle': 'ДМШИ №2 г. Брест',
-          'nav-home': 'Главная',
-          'nav-news': 'Новости',
-          'nav-history': 'История',
-          'nav-achievements': 'Достижения',
-          'nav-recordings': 'Записи',
-          'nav-contacts': 'Контакты',
-          'page-title': 'Записи',
-          'page-subtitle': 'Аудиозаписи концертных номеров',
-          'rec-title1': 'При долине куст калины',
-          'rec-title2': 'Пойдуль я выйлуль я',
-          'rec-title3': 'Паехау сидар да млына',
-          'rec-title4': 'Развитальнпя',
-          'rec-title5': 'Песня мира',
-          'rec-title6': 'Земля',
-          'rec-title7': 'Колыбельная пеплу',
-          'rec-title8': 'Смуглянка',
-          'rec-desc': 'Концертное исполнение',
-          'placeholder-text': 'Запись появится позже',
-          'audio-unsupported': 'Ваш браузер не поддерживает аудио.',
-          'download-btn': 'Скачать',
-          'footer-school': 'ГУО «Детская музыкальная школа искусств №2 г. Бреста»',
-          'footer-address': 'ул. Московская, 300, 224005 Брест, Беларусь',
-          'footer-copyright': '© 2026 Хор «Пралескі». Все права защищены.'
-        },
-        be: {
-          'site-title': 'Хор «Пралескі»',
-          'site-subtitle': 'ДМШІ №2 г. Брэст',
-          'nav-home': 'Галоўная',
-          'nav-news': 'Навіны',
-          'nav-history': 'Гісторыя',
-          'nav-achievements': 'Дасягненні',
-          'nav-recordings': 'Запісы',
-          'nav-contacts': 'Кантакты',
-          'page-title': 'Запісы',
-          'page-subtitle': 'Аўдыёзапісы канцэртных нумароў',
-          'rec-title1': 'Пры даліне куст каліны',
-          'rec-title2': 'Пайдуль я выйдуль я',
-          'rec-title3': 'Паехаў сідар да млына',
-          'rec-title4': 'Развітальная',
-          'rec-title5': 'Песня міру',
-          'rec-title6': 'Зямля',
-          'rec-title7': 'Калыбельная попелу',
-          'rec-title8': 'Смуглянка',
-          'rec-desc': 'Канцэртнае выкананне',
-          'placeholder-text': 'Запіс з\'явіцца пазней',
-          'audio-unsupported': 'Ваш браўзер не падтрымлівае аўдыё.',
-          'download-btn': 'Спампаваць',
-          'footer-school': 'ДУА «Дзіцячая музычная школа мастацтваў №2 г. Брэста»',
-          'footer-address': 'вул. Маскоўская, 300, 224005 Брэст, Беларусь',
-          'footer-copyright': '© 2026 Хор «Пралескі». Усе правы абаронены.'
-        }
-      };
-
-      function setLanguage(lang) {
-        const elements = document.querySelectorAll('[data-lang-key]');
-        elements.forEach(el => {
-          const key = el.getAttribute('data-lang-key');
-          if (translations[lang] && translations[lang][key] !== undefined) {
-            el.innerHTML = translations[lang][key];
-          }
-        });
-        langBtns.forEach(btn => {
-          const val = btn.getAttribute('data-lang-btn');
-          if (val === lang) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
-        localStorage.setItem('pra-leski-lang', lang);
-      }
-
-      langBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const lang = this.getAttribute('data-lang-btn');
-          setLanguage(lang);
-        });
-      });
-
-      const savedLang = localStorage.getItem('pra-leski-lang');
-      if (savedLang && translations[savedLang]) {
-        setLanguage(savedLang);
-      } else {
-        setLanguage('ru');
-      }
-
-      // ---------- КАСТОМНЫЙ АУДИОПЛЕЕР (только для 6-й записи) ----------
-      function setupCustomAudio(cardId) {
-        const playBtn = document.getElementById('play-btn-' + cardId);
-        const audio = document.getElementById('audio-' + cardId);
-        const progressBar = document.getElementById('progress-bar-' + cardId);
-        const progressFill = document.getElementById('progress-fill-' + cardId);
-        const timeLabel = document.getElementById('time-label-' + cardId);
-
-        if (!playBtn || !audio || !progressBar || !progressFill || !timeLabel) return;
-
-        function formatTime(seconds) {
-          if (isNaN(seconds)) return '0:00';
-          const mins = Math.floor(seconds / 60);
-          const secs = Math.floor(seconds % 60);
-          return mins + ':' + (secs < 10 ? '0' : '') + secs;
-        }
-
-        function updateProgress() {
-          const current = audio.currentTime || 0;
-          const duration = audio.duration || 0;
-          const percent = duration > 0 ? (current / duration) * 100 : 0;
-          progressFill.style.width = percent + '%';
-          timeLabel.textContent = formatTime(current) + ' / ' + formatTime(duration);
-        }
-
-        function togglePlay() {
-          if (audio.paused) {
-            audio.play();
-            playBtn.classList.add('playing');
-            playBtn.setAttribute('aria-label', 'Пауза');
-          } else {
-            audio.pause();
-            playBtn.classList.remove('playing');
-            playBtn.setAttribute('aria-label', 'Воспроизвести');
-          }
-        }
-
-        playBtn.addEventListener('click', togglePlay);
-
-        audio.addEventListener('loadedmetadata', function() {
-          updateProgress();
-        });
-        audio.addEventListener('timeupdate', function() {
-          updateProgress();
-        });
-        audio.addEventListener('ended', function() {
-          playBtn.classList.remove('playing');
-          playBtn.setAttribute('aria-label', 'Воспроизвести');
-          progressFill.style.width = '0%';
-          timeLabel.textContent = '0:00 / ' + formatTime(audio.duration);
-        });
-
-        // Клик по прогресс-бару для перемотки
-        progressBar.addEventListener('click', function(e) {
-          const rect = progressBar.getBoundingClientRect();
-          const offsetX = e.clientX - rect.left;
-          const width = rect.width;
-          if (width > 0 && audio.duration) {
-            const newTime = (offsetX / width) * audio.duration;
-            audio.currentTime = newTime;
-            updateProgress();
-          }
-        });
-
-        // Начальное обновление
-        updateProgress();
-      }
-
-      // Инициализация для 6-й карточки
-      setupCustomAudio(6);
     })();
   </script>
 </body>
